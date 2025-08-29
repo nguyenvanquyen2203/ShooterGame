@@ -14,11 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Wood
   itemImage: {fileID: 21300000, guid: d1221c8a54a2f1e49951fb0a8d086a87, type: 3}
-  reserveAmmo: 0
-  maxAmmo: 1
   currentLv: 0
   maxLevel: 3
-  buyAmmoCost: 600
-  magazineSize: 1
   upgradeCost: 2000
   upgradeIncrease: 2000

@@ -8,6 +8,7 @@ public class CustomBtn : MonoBehaviour
 {
     public Button button;
     public TextMeshProUGUI buttonText;
+    public TextMeshProUGUI buttonContentText;
     private Image img;
     private void Awake()
     {
@@ -15,7 +16,15 @@ public class CustomBtn : MonoBehaviour
     }
     public void SetButton(string content, bool isActive)
     {
+        buttonContentText.text = "Buy Ammo";
         buttonText.text = content;
+        if (isActive) ActiveButton();
+        else DisactiveButton();
+    }
+    public void SetMaxButton(string content, bool isActive)
+    {
+        buttonContentText.text = content;
+        buttonText.text = "";
         if (isActive) ActiveButton();
         else DisactiveButton();
     }

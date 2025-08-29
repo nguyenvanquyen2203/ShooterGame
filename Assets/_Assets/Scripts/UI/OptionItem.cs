@@ -4,16 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class OptionItem : MonoBehaviour
+public abstract class OptionItem<T> : MonoBehaviour where T : OptionItemData
 {
-    public TextMeshProUGUI ammoText;
     public TextMeshProUGUI nameItemText;
     public Image itemImg;
     public CustomBtn buyAmmoBtn;
     public CustomBtn upgradeBtn;
-    public Button equipBtn;
-    private OptionItemData data;
-    public virtual void SetOptionItem(OptionItemData _data, int currentCoin)
+    protected T data;
+    public void SetOptionItem(T _data, int currentCoin)
     {
         data = _data;
         itemImg.sprite = data.itemImage;
@@ -21,14 +19,18 @@ public class OptionItem : MonoBehaviour
         ReloadOptionItem(currentCoin);
         gameObject.SetActive(true);
     }
-    public void ReloadOptionItem(int currentCoin)
-    {
-        ammoText.text = data.reserveAmmo.ToString();
-        buyAmmoBtn.SetButton(data.buyAmmoCost.ToString(), data.CheckBuyAmmo(currentCoin));
+    public abstract void ReloadOptionItem(int currentCoin);
+    /*{
+        if (data.buyAmmoCost == 0) buyAmmoBtn.SetMaxButton("Mounted", data.CheckBuyAmmo(currentCoin));
+        else buyAmmoBtn.SetButton(data.buyAmmoCost.ToString(), data.CheckBuyAmmo(currentCoin));
         upgradeBtn.SetButton(data.upgradeCost.ToString(), data.CheckUpgrade(currentCoin));
-    }
-    public void UpgradeItem()
+    }*/
+    public virtual void UpgradeItem()
     {
         
     }
+    /*public virtual void BuyAmmo()
+    {
+        data.buyAmmoCost = 0;
+    }*/
 }

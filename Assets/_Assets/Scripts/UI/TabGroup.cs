@@ -10,7 +10,7 @@ public class TabGroup : MonoBehaviour
     public Sprite tabActive;
     private TabButton selected;
     private OptionWindowManager optionManager;
-    private void Awake()
+    private void Start()
     {
         optionManager = GetComponent<OptionWindowManager>();
         OnTabEnter(tabs[0]);

@@ -6,4 +6,10 @@ public class OptionDefenderData : OptionItemData
     {
         
     }
+
+    public override bool CheckBuyAmmo(int currentCoin)
+    {
+        Debug.Log("Do check buy ammo in defender logic");
+        return true;
+    }
 }
