@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4117edafa4a63f48b21585984fbab53, type: 3}
+  m_Name: AK47
+  m_EditorClassIdentifier: 
+  nameGun: AK47
+  image: {fileID: 1626339494, guid: 89bdee847c429bc46aed9f5564895ca3, type: 3}
+  headPos: {x: 2.25, y: -0.05, z: 0}
+  fireDelayTime: 0.1
+  damage: 1
+  magazineSize: 30
+  reserveAmmo: 240
+  reloadTime: 1
+  recoilAround: {x: 0.25, y: 0.5}
+  gunAnimator: {fileID: 22100000, guid: 5593932c7bcc91b4c8d71aa2f120ced3, type: 2}
+  bullet:
+    poolName: SingleBulletPool
+    prefab: {fileID: 9113644219029000464, guid: ac92728c02d4fc24686cd7d2bd0ed58c, type: 3}
+    initialSize: 30
+  explosion:
+    poolName: BulletExplosionPool
+    prefab: {fileID: 6036896651888684258, guid: bf5b1d80cf401804fb8db2af5b7da69b, type: 3}
+    initialSize: 30

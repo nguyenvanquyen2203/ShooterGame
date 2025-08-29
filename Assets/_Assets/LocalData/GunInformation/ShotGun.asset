@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4117edafa4a63f48b21585984fbab53, type: 3}
+  m_Name: ShotGun
+  m_EditorClassIdentifier: 
+  nameGun: ShotGun
+  image: {fileID: 2107595011, guid: 89bdee847c429bc46aed9f5564895ca3, type: 3}
+  headPos: {x: 3, y: 0.05, z: 0}
+  fireDelayTime: 0.5
+  damage: 3
+  magazineSize: 9
+  reserveAmmo: 27
+  reloadTime: 1
+  recoilAround: {x: 0, y: 0}
+  gunAnimator: {fileID: 22100000, guid: 99108b487ec4a32448e354e47276e7e2, type: 2}
+  bullet:
+    poolName: ShotgunBulletPool
+    prefab: {fileID: 6240212385162307232, guid: 7c81c49df76f31441855f812836ca05d, type: 3}
+    initialSize: 5
+  explosion:
+    poolName: ExplosionGroupPool
+    prefab: {fileID: 4740832035980023640, guid: 1ad1f992da28a4b46bde9836b6d13b48, type: 3}
+    initialSize: 5
