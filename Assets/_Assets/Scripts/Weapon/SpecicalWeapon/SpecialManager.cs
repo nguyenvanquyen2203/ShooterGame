@@ -15,10 +15,11 @@ public class SpecialManager : MonoBehaviour
     private void Start()
     {
         listSpecicalWeaponData = InGameData.Instance.specialItemEquips;
-        for (int i = 0; i < listIcon.Count; i++)
+        for (int i = 0; i < listSpecicalWeaponData.Count; i++)
         {
             listIcon[i].SetIcon(listSpecicalWeaponData[i].icon, listSpecicalWeaponData[i].currentOwner);
         }
+        for (int i = listSpecicalWeaponData.Count; i < listIcon.Count; i++) listIcon[i].gameObject.SetActive(false);
     }
     public void ActiveSpWeapon(int index)
     {
@@ -33,22 +34,8 @@ public class SpecialManager : MonoBehaviour
     }
     public void UseSpWeapon(int index, Vector3 activePos)
     {
-        if (index == 1)
-        {
-            SpecialWeapon boom = PoolManager.Instance.Get<SpecialWeapon>("Boom");
-            boom.ActiveSpWeapon(activePos);
-        } 
-        if (index == 2)
-        {
-            SpecialWeapon firePotion = PoolManager.Instance.Get<SpecialWeapon>("IcePotion");
-            firePotion.ActiveSpWeapon(activePos);
-        } 
-        //if (index == 3) snow.ActiveSpWeapon(activePos);
-        if (index == 3)
-        {
-            SpecialWeapon stopSign = PoolManager.Instance.Get<SpecialWeapon>("StopSign");
-            stopSign.ActiveSpWeapon(activePos);
-        }
+        SpecialWeapon spItem = PoolManager.Instance.Get<SpecialWeapon>(listSpecicalWeaponData[index - 1].nameWeapon);
+        spItem.ActiveSpWeapon(activePos);
     }
     public void Cooldown(float cooldownTime)
     {

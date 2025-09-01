@@ -4,11 +4,6 @@ using UnityEngine;
 using DG.Tweening;
 public class Demon : Enemy
 {
-    // Start is called before the first frame update
-    private void Start()
-    {
-        //IntinialEnemy();
-    }
     public void IntinialEnemy()
     {
         EnemyStatus status = EnemySpawner.Instance.GetEnemyStatus(nameObject);
@@ -48,7 +43,7 @@ public class Demon : Enemy
     {
         var hit = Physics2D.Raycast(transform.position, Vector2.left, 0.6f, playerLayer);
         PlayerHealth health = hit.transform.GetComponent<PlayerHealth>();
-        health.TakeDame(status.damage);
+        health.TakeHit(status.damage, false);
     }
 
     public override void OnCreate()

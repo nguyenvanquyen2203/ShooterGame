@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Monster
+  - FlyingEnemy
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - BoxGround/3
   - BoxGround/4
   - Player
-  - 
-  - 
+  - Drone
+  - FlyingMonster
   - 
   - 
   - 

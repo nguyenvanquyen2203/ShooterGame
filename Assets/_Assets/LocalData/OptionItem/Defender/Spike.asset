@@ -18,4 +18,5 @@ MonoBehaviour:
   maxLevel: 3
   upgradeCost: 2000
   upgradeIncrease: 2000
-  buyAmmoCost: 0
+  description: 
+  buyCost: 600

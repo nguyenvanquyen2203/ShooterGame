@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: AK47
   itemImage: {fileID: 1626339494, guid: 89bdee847c429bc46aed9f5564895ca3, type: 3}
-  reserveAmmo: 240
-  maxAmmo: 240
-  currentLv: 1
+  currentLv: 2
   maxLevel: 7
-  buyAmmoCost: 200
-  magazineSize: 30
   upgradeCost: 1200
   upgradeIncrease: 1200
+  reserveAmmo: 210
+  maxAmmo: 240
+  buyAmmoCost: 200
+  magazineSize: 30
   gunInformation: {fileID: 11400000, guid: 9f3ca0bbf6577be4c8aa2d62b7410060, type: 2}

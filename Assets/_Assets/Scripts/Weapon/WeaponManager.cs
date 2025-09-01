@@ -30,6 +30,7 @@ public class WeaponManager : MonoBehaviour
     }
     void Start()
     {
+        gunInfos = InGameData.Instance.gunEquips;
         //Spawn pool need for game
         foreach (var gun in gunInfos)
         {
@@ -46,6 +47,10 @@ public class WeaponManager : MonoBehaviour
             int reserveAmmo = gunInfos[i].reserveAmmo - bulletInMagazine;
             bulletPerAmmo.Add((bulletInMagazine, reserveAmmo));
             listGunIcon[i].SetIcon(gunInfos[i].image, reserveAmmo);
+        }
+        for (int i = gunInfos.Count; i < listGunIcon.Count; i++)
+        {
+            listGunIcon[i].gameObject.SetActive(false);
         }
         gunCtrl.SetGun(gunInfos[0], bulletPerAmmo[0].Item1, bulletPerAmmo[0].Item2);
     }
@@ -79,6 +84,7 @@ public class WeaponManager : MonoBehaviour
     }
     private void SetCurrentGun(int newIndex)
     {
+        if (newIndex >= listGunIcon.Count - 1) return;
         if (currentIndexWeapon != 0) CancelSpecialWeapon();
         if (newIndex == currentIndexGun) return;
 
@@ -95,6 +101,7 @@ public class WeaponManager : MonoBehaviour
     }
     private void SetSpecialWeapon(int index)
     {
+        if (index >= InGameData.Instance.specialItemEquips.Count) return;
         if (specialWeaponCooldown > 0) return; 
         if (index == currentIndexWeapon)
         {

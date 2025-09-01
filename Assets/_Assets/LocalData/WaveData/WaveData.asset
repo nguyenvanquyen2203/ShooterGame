@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaveData
   m_EditorClassIdentifier: 
   listEnemyPos:
-  - nameEnemy: Demon
+  - nameEnemy: FlyingDemon
     position: {x: 7, y: 0.5, z: 0}
   - nameEnemy: Demon
     position: {x: 8, y: -0.5, z: 0}

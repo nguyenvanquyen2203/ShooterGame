@@ -8,10 +8,8 @@ public abstract class OptionWeaponData : OptionItemData
     public int reserveAmmo;
     public int maxAmmo;
     public int buyAmmoCost;
-    public override void BuyAmmo()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    
+    public bool IsEquip() => isEquip;
+    public void EquipWeapon() => isEquip = true;
+    public void UnequipWeapon() => isEquip = false;
+    public bool IsFullAmmo() => reserveAmmo >= maxAmmo;
 }

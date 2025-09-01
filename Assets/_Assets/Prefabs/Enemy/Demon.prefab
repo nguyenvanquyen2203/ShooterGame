@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 7113898304194325799}
   m_Layer: 6
   m_Name: Demon
-  m_TagString: Untagged
+  m_TagString: FlyingEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

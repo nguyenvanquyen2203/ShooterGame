@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class OptionWindowManager : MonoBehaviour
 {
+    private static OptionWindowManager instance;
+    public static OptionWindowManager Instance { get { return instance; } }
     public OptionTowerItem towerItemPrefab;
     public OptionWeaponItem weaponItemPrefab;
     public EquipManager equipManager;
@@ -17,9 +19,13 @@ public class OptionWindowManager : MonoBehaviour
     public List<int> listNumberEquip;
     private List<OptionTowerItem> optionTowerItems;
     private List<OptionWeaponItem> optionWeaponItems;
+
+    public DescriptionPanel descriptionPanel;
+    private int indexPage;
     // Start is called before the first frame update
     private void Awake()
     {
+        instance = this;
         optionTowerItems = new();
         for (int i = 0; i < number; i++)
         {
@@ -34,44 +40,86 @@ public class OptionWindowManager : MonoBehaviour
             weaponObj.gameObject.SetActive(false);
             optionWeaponItems.Add(weaponObj);
         }
-    }
-    private void OnEnable()
-    {
-        
+        gunDatas[1].EquipWeapon();
+        //gunDatas[1].UnequipWeapon();
     }
     public void SetWindowData(int index)
     {
-        equipManager.ChangeWindow(listNumberEquip[index]);
+        indexPage = index;
         if (index == 0)
         {
             for (int i = 0; i < gunDatas.Count; i++)
             {
                 var gunData = gunDatas[i];
-                optionWeaponItems[i].SetOptionItem(gunData, 1000);
+                optionWeaponItems[i].SetOptionItem(gunData, CoinManager.Instance.GetCoin());
             }
             for (int i = gunDatas.Count; i < optionWeaponItems.Count; i++) optionWeaponItems[i].gameObject.SetActive(false);
 
             for (int i = 0; i < towerDatas.Count; i++) optionTowerItems[i].gameObject.SetActive(false);
+            equipManager.ChangeWindow(listNumberEquip[index],gunDatas);
         }
         if (index == 1)
         {
             for (int i = 0; i < itemDatas.Count; i++)
             {
-                optionWeaponItems[i].SetOptionItem(itemDatas[i], 1000);
+                optionWeaponItems[i].SetOptionItem(itemDatas[i], CoinManager.Instance.GetCoin());
             }
             for (int i = itemDatas.Count; i < optionWeaponItems.Count; i++) optionWeaponItems[i].gameObject.SetActive(false);
 
             for (int i = 0; i < towerDatas.Count; i++) optionTowerItems[i].gameObject.SetActive(false);
+            equipManager.ChangeWindow(listNumberEquip[index], itemDatas);
         }
         if (index == 2)
         {
             for (int i = 0; i < towerDatas.Count; i++)
             {
-                optionTowerItems[i].SetOptionItem(towerDatas[i], 1000);
+                optionTowerItems[i].SetOptionItem(towerDatas[i], CoinManager.Instance.GetCoin());
             }
             for (int i = towerDatas.Count; i < optionTowerItems.Count; i++) optionTowerItems[i].gameObject.SetActive(false);
 
             for (int i = 0; i < optionWeaponItems.Count; i++) optionWeaponItems[i].gameObject.SetActive(false);
+            equipManager.ChangeWindow(listNumberEquip[index], itemDatas);
         }
+    }
+    public void ReloadWindow()
+    {
+        SetWindowData(indexPage);
+    }
+    /*public void UnequipWeapon(int indexWeapon)
+    {
+        if (indexPage == 0)
+        {
+            gunDatas[indexWeapon].UnequipWeapon();
+            equipManager.ChangeWindow(listNumberEquip[indexPage], gunDatas);
+        } 
+        if (indexPage == 1)
+        {
+            itemDatas[indexWeapon].UnequipWeapon();
+            equipManager.ChangeWindow(listNumberEquip[indexPage], itemDatas);
+        }
+    }
+    public void EquipWeapon(int indexWeapon)
+    {
+        if (indexPage == 0)
+        {
+            gunDatas[indexWeapon].UnequipWeapon();
+            equipManager.ChangeWindow(listNumberEquip[indexPage], gunDatas);
+        }
+        if (indexPage == 1)
+        {
+            itemDatas[indexWeapon].UnequipWeapon();
+            equipManager.ChangeWindow(listNumberEquip[indexPage], itemDatas);
+        }
+    }*/
+    public void ClearEquipBtn()
+    {
+        if (indexPage == 0)
+            for (int i = 0; i < gunDatas.Count; i++) optionWeaponItems[i].RemoveEquipBtn();
+        if (indexPage == 1)
+            for (int i = 0; i < itemDatas.Count; i++) optionWeaponItems[i].RemoveEquipBtn();
+    }
+    public void ShowDescriptionPanel(Sprite sprite, string namePanel, string description)
+    {
+        descriptionPanel.ActiveDescription(sprite, namePanel, description);
     }
 }

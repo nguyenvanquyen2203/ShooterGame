@@ -18,3 +18,5 @@ MonoBehaviour:
   maxLevel: 3
   upgradeCost: 2000
   upgradeIncrease: 2000
+  description: 
+  buyCost: 600

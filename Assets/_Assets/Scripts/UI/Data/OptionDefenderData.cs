@@ -2,14 +2,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "OptionItem/OptionDefenderData", fileName = "OptionDefenderData")]
 public class OptionDefenderData : OptionItemData
 {
-    public override void BuyAmmo()
+    public int buyCost;
+    public override void BuyItem()
     {
-        
+        buyCost = 0;
     }
 
-    public override bool CheckBuyAmmo(int currentCoin)
+    public override bool CheckBuyItem(int currentCoin)
     {
-        Debug.Log("Do check buy ammo in defender logic");
+        if (buyCost > currentCoin) return false;
         return true;
     }
 }

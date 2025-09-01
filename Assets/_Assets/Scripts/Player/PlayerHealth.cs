@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class PlayerHealth : MonoBehaviour
+public abstract class PlayerHealth : MonoBehaviour,IHealth
 {
     public float maxHP;
     private float currentHp;
@@ -12,7 +12,9 @@ public abstract class PlayerHealth : MonoBehaviour
     {
         currentHp = maxHP;
     }
-    public virtual void TakeDame(float damage)
+    public abstract void Destroy();
+
+    public virtual void TakeHit(float damage, bool isCritical)
     {
         currentHp -= damage;
         hpSlider.value = currentHp / maxHP;
@@ -20,7 +22,6 @@ public abstract class PlayerHealth : MonoBehaviour
         {
             Destroy();
             return;
-        } 
+        }
     }
-    public abstract void Destroy();
 }

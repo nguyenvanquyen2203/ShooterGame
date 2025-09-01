@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public abstract class Enemy : PoolObject
+public abstract class Enemy : PoolObject, IHealth
 {
     public enum SpEffect
     {
@@ -21,13 +21,14 @@ public abstract class Enemy : PoolObject
     protected EnemyStatus status;
     protected float multiplyMove;
     protected Vector2 direction;
-    protected float currentHp;
     protected WaveController controller;
     protected float cooldownAttack;
     protected SpEffect currentEffect;
     protected float burnCooldown;
     protected Color targetColor = new Color(0.5f, 1f, 1f);
     protected bool isMaxColor;
+    protected float currentHp;
+
     public virtual void IntinializeEnemy(EnemyStatus _status)
     {
         anim = GetComponent<Animator>();
@@ -35,7 +36,7 @@ public abstract class Enemy : PoolObject
         enemyCollider = GetComponent<BoxCollider2D>();
         status = _status;
     }
-    public void ActiveEnemy(Vector3 position, WaveController controller)
+    public virtual void ActiveEnemy(Vector3 position, WaveController controller)
     {
         isMaxColor = true;
         currentEffect = SpEffect.None;
@@ -53,7 +54,6 @@ public abstract class Enemy : PoolObject
         currentHp -= damage;
         if (isCritical)
         {
-            Debug.Log("Critical");
             currentHp -= damage;
             TextEffect effect = PoolManager.Instance.Get<TextEffect>("CriticalTxt");
             effect.ActiveEffect(transform.position + Vector3.up * 2f, "CRITICAL!!!");

@@ -15,6 +15,10 @@ public class TabGroup : MonoBehaviour
         optionManager = GetComponent<OptionWindowManager>();
         OnTabEnter(tabs[0]);
     }
+    private void OnEnable()
+    {
+        if (optionManager != null) OnTabEnter(tabs[0]);
+    }
     public void OnTabHover(TabButton tab)
     {
         if (selected == tab) return;
@@ -22,7 +26,7 @@ public class TabGroup : MonoBehaviour
     }
     public void OnTabEnter(TabButton tab)
     {
-        if (selected == tab) return;
+        //if (selected == tab) return;
         if (selected != null) selected.background.sprite = tabIdle;
         selected = tab;
         tab.background.sprite = tabActive;

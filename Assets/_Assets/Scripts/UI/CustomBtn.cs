@@ -14,20 +14,19 @@ public class CustomBtn : MonoBehaviour
     {
         img = GetComponent<Image>();
     }
-    public void SetButton(string content, bool isActive)
+    public void SetButton(string content, string price, bool isActive)
     {
-        buttonContentText.text = "Buy Ammo";
-        buttonText.text = content;
+        buttonContentText.text = content;
+        buttonText.text = price;
         if (isActive) ActiveButton();
         else DisactiveButton();
     }
-    public void SetMaxButton(string content, bool isActive)
+    /*public void SetMaxButton(string content)
     {
         buttonContentText.text = content;
         buttonText.text = "";
-        if (isActive) ActiveButton();
-        else DisactiveButton();
-    }
+        DisactiveButton();
+    }*/
     private void ActiveButton()
     {
         button.interactable = true;

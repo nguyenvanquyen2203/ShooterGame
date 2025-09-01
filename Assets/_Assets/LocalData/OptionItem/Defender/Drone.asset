@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Drone
   itemImage: {fileID: -863914892, guid: 815bc30175201c345b2106338de28ad4, type: 3}
-  reserveAmmo: 0
-  maxAmmo: 1
   currentLv: 0
   maxLevel: 3
-  buyAmmoCost: 600
-  magazineSize: 1
   upgradeCost: 2000
   upgradeIncrease: 2000
+  description: 
+  buyCost: 600

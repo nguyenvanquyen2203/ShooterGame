@@ -4,15 +4,12 @@ public class OptionGunData : OptionWeaponData
 {
     public int magazineSize;
     public GunInformation gunInformation;
-    public override void BuyAmmo()
+    public override void BuyItem()
     {
-        
+        reserveAmmo = Mathf.Clamp(reserveAmmo + magazineSize, 0, maxAmmo);
     }
-    public void Equip() => isEquip = true;
-    public void Unequip() => isEquip = false;
-    public bool IsEquip() => isEquip;
 
-    public override bool CheckBuyAmmo(int currentCoin)
+    public override bool CheckBuyItem(int currentCoin)
     {
         if (currentCoin < buyAmmoCost) return false;
         if (reserveAmmo >= maxAmmo) return false;

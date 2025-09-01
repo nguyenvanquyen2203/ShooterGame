@@ -4,12 +4,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "OptionItem/OptionSpecialData", fileName = "OptionSpecialData")]
 public class OptionSpecialData : OptionWeaponData
 {
-    public override void BuyAmmo()
+    public override void BuyItem()
     {
-        
+        reserveAmmo++;
     }
 
-    public override bool CheckBuyAmmo(int currentCoin)
+    public override bool CheckBuyItem(int currentCoin)
     {
         if (currentCoin < buyAmmoCost) return false;
         if (reserveAmmo >= maxAmmo) return false;

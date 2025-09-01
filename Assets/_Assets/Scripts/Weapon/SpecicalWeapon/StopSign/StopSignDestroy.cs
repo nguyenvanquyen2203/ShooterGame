@@ -7,14 +7,15 @@ public class StopSignDestroy : PlayerHealth
     {
         gameObject.SetActive(false);
     }
-    public override void TakeDame(float damage)
+    public override void TakeHit(float damage, bool isCritical)
     {
-        base.TakeDame(damage);
+        base.TakeHit(damage, isCritical);
         DOTween.Kill(sliderCanvasGroup);
         sliderCanvasGroup.alpha = 1f;
         sliderCanvasGroup.gameObject.SetActive(true);
         sliderCanvasGroup.DOFade(0f, 2f).SetEase(Ease.InQuart).OnComplete(() => {
             sliderCanvasGroup.gameObject.SetActive(false);
+
         });
     }
 }
