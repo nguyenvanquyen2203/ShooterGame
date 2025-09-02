@@ -463,7 +463,6 @@ GameObject:
   - component: {fileID: 89406382}
   - component: {fileID: 89406384}
   - component: {fileID: 89406385}
-  - component: {fileID: 89406386}
   m_Layer: 5
   m_Name: OptionWindow
   m_TagString: Untagged
@@ -552,20 +551,6 @@ MonoBehaviour:
   equipManager: {fileID: 518054732}
   number: 5
   parent: {fileID: 94601723}
-  gunDatas:
-  - {fileID: 11400000, guid: 4a06d32c8f1417d4ebdc007a0872cf9f, type: 2}
-  - {fileID: 11400000, guid: 67049589a9138594189851b1080a8e76, type: 2}
-  - {fileID: 11400000, guid: 06af1969a739c114dab8dd2d52256aa0, type: 2}
-  itemDatas:
-  - {fileID: 11400000, guid: fab8ab31b878a974ead77fd8a125b436, type: 2}
-  - {fileID: 11400000, guid: c2c7cc51da2a0cb489db3e7cb767a61d, type: 2}
-  - {fileID: 11400000, guid: 7f511ef64ecf1a64194a65e3bf72261a, type: 2}
-  - {fileID: 11400000, guid: c9eb54f7e2725d641bfb4d78f65de788, type: 2}
-  towerDatas:
-  - {fileID: 11400000, guid: e23d1acb0b30e2945bb6695906494144, type: 2}
-  - {fileID: 11400000, guid: 973ff1d3c8f1f854fbdb901256d7d3da, type: 2}
-  - {fileID: 11400000, guid: 7219ec2e3fbd0f94f8e5a8e3609481f3, type: 2}
-  listNumberEquip: 020000000300000000000000
   descriptionPanel: {fileID: 15066817}
 --- !u!114 &89406385
 MonoBehaviour:
@@ -586,19 +571,6 @@ MonoBehaviour:
   tabIdle: {fileID: 21300000, guid: 5615486409e34b54483a1a92a333fecd, type: 3}
   tabHover: {fileID: 21300000, guid: 61f22f876a8900c4b8fd38731095e3cf, type: 3}
   tabActive: {fileID: 21300000, guid: 595be511112edd94481cdbe89b2b4918, type: 3}
---- !u!114 &89406386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89406380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29f44cf5d2b70304db9d5eb3aabd75c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fontPanel: {fileID: 2050001508}
 --- !u!1 &94601722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,7 +1631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602260546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 313.02713, y: 255.10056, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3896,7 +3868,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1398553584}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1746907145}
+        m_TargetAssemblyTypeName: GameMenu, Assembly-CSharp
+        m_MethodName: LoadGameScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1398553584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3973,7 +3957,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424785040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 443.375, y: 194, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4191,6 +4175,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500924302}
   m_CullTransparentMesh: 1
+--- !u!1 &1571418109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1571418111}
+  - component: {fileID: 1571418110}
+  m_Layer: 0
+  m_Name: LocalData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1571418110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571418109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcb27755583d994d90ecbb29f788dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunDatas:
+  - {fileID: 11400000, guid: 67049589a9138594189851b1080a8e76, type: 2}
+  - {fileID: 11400000, guid: 4a06d32c8f1417d4ebdc007a0872cf9f, type: 2}
+  - {fileID: 11400000, guid: 06af1969a739c114dab8dd2d52256aa0, type: 2}
+  itemDatas:
+  - {fileID: 11400000, guid: fab8ab31b878a974ead77fd8a125b436, type: 2}
+  - {fileID: 11400000, guid: c2c7cc51da2a0cb489db3e7cb767a61d, type: 2}
+  - {fileID: 11400000, guid: 7f511ef64ecf1a64194a65e3bf72261a, type: 2}
+  - {fileID: 11400000, guid: c9eb54f7e2725d641bfb4d78f65de788, type: 2}
+  towerDatas:
+  - {fileID: 11400000, guid: e23d1acb0b30e2945bb6695906494144, type: 2}
+  - {fileID: 11400000, guid: 7219ec2e3fbd0f94f8e5a8e3609481f3, type: 2}
+  - {fileID: 11400000, guid: 973ff1d3c8f1f854fbdb901256d7d3da, type: 2}
+  listNumberEquip: 020000000300000000000000
+--- !u!4 &1571418111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571418109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1709484051
 GameObject:
   m_ObjectHideFlags: 0
@@ -4589,6 +4631,7 @@ GameObject:
   - component: {fileID: 1808109198}
   - component: {fileID: 1808109200}
   - component: {fileID: 1808109199}
+  - component: {fileID: 1808109201}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -4654,6 +4697,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808109197}
   m_CullTransparentMesh: 1
+--- !u!95 &1808109201
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808109197}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e95109de38fd004caeab2d2eb683db7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1950248833
 GameObject:
   m_ObjectHideFlags: 0

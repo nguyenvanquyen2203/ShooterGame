@@ -13,8 +13,15 @@ public class OptionTowerItem : OptionItem<OptionDefenderData>
 
     public override void ReloadOptionItem(int currentCoin)
     {
-        if (data.buyCost <= 0) buyItemBtn.SetButton("Mounted", "", false);
-        else buyItemBtn.SetButton("Buy", data.buyCost.ToString(), data.CheckBuyItem(currentCoin));
-        upgradeBtn.SetButton("Upgrade", data.upgradeCost.ToString(), data.CheckUpgrade(currentCoin));
+        if (data.currentLv <= 0)
+        {
+            buyItemBtn.SetButton("Buy", data.buyCost.ToString(), data.CheckBuyItem(currentCoin));
+            upgradeBtn.SetButton("Upgrade", string.Empty, false);
+        }
+        else
+        {
+            buyItemBtn.SetButton("Mounted", "", false);
+            upgradeBtn.SetButton("Upgrade", data.upgradeCost.ToString(), data.CheckUpgrade(currentCoin));
+        }
     }
 }

@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Boom
   itemImage: {fileID: 21300000, guid: 2b5d0656ea99691439ee848da9deb04c, type: 3}
-  currentLv: 1
+  currentLv: 0
   maxLevel: 7
-  upgradeCost: 1000
+  upgradeCost: 200
   upgradeIncrease: 1000
-  reserveAmmo: 4
+  description: Boom description
+  reserveAmmo: 0
   maxAmmo: 10
   buyAmmoCost: 200
+  data: {fileID: 11400000, guid: 0fa589df5c22ca9469c44ecf18928047, type: 2}

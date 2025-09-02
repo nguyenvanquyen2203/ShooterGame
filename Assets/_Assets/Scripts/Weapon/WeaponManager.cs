@@ -84,7 +84,7 @@ public class WeaponManager : MonoBehaviour
     }
     private void SetCurrentGun(int newIndex)
     {
-        if (newIndex >= listGunIcon.Count - 1) return;
+        if (newIndex > listGunIcon.Count - 1) return;
         if (currentIndexWeapon != 0) CancelSpecialWeapon();
         if (newIndex == currentIndexGun) return;
 
@@ -101,7 +101,7 @@ public class WeaponManager : MonoBehaviour
     }
     private void SetSpecialWeapon(int index)
     {
-        if (index >= InGameData.Instance.specialItemEquips.Count) return;
+        if (index > InGameData.Instance.specialItemEquips.Count) return;
         if (specialWeaponCooldown > 0) return; 
         if (index == currentIndexWeapon)
         {

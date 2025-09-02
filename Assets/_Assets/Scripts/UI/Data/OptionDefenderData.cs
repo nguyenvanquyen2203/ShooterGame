@@ -5,7 +5,7 @@ public class OptionDefenderData : OptionItemData
     public int buyCost;
     public override void BuyItem()
     {
-        buyCost = 0;
+        currentLv++;
     }
 
     public override bool CheckBuyItem(int currentCoin)

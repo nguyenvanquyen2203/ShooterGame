@@ -15,4 +15,14 @@ public class OptionGunData : OptionWeaponData
         if (reserveAmmo >= maxAmmo) return false;
         return true;
     }
+    public override void EquipWeapon()
+    {
+        base.EquipWeapon();
+        InGameData.Instance.EquipGun(gunInformation);
+    }
+    public override void UnequipWeapon()
+    {
+        base.UnequipWeapon();
+        InGameData.Instance.UnequipGun(gunInformation);
+    }
 }

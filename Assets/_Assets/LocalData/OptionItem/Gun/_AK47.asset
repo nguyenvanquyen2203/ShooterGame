@@ -16,8 +16,9 @@ MonoBehaviour:
   itemImage: {fileID: 1626339494, guid: 89bdee847c429bc46aed9f5564895ca3, type: 3}
   currentLv: 2
   maxLevel: 7
-  upgradeCost: 1200
+  upgradeCost: 200
   upgradeIncrease: 1200
+  description: AK47 description
   reserveAmmo: 210
   maxAmmo: 240
   buyAmmoCost: 200

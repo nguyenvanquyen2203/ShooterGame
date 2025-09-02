@@ -12,11 +12,11 @@ public class OptionWindowManager : MonoBehaviour
     public EquipManager equipManager;
     public int number;
     public Transform parent;
-    [Header("Option Item Data")]
-    public List<OptionGunData> gunDatas;
-    public List<OptionSpecialData> itemDatas;
-    public List<OptionDefenderData> towerDatas;
-    public List<int> listNumberEquip;
+
+    private List<OptionGunData> gunDatas;
+    private List<OptionSpecialData> itemDatas;
+    private List<OptionDefenderData> towerDatas;
+    private List<int> listNumberEquip;
     private List<OptionTowerItem> optionTowerItems;
     private List<OptionWeaponItem> optionWeaponItems;
 
@@ -40,8 +40,10 @@ public class OptionWindowManager : MonoBehaviour
             weaponObj.gameObject.SetActive(false);
             optionWeaponItems.Add(weaponObj);
         }
-        gunDatas[1].EquipWeapon();
-        //gunDatas[1].UnequipWeapon();
+        gunDatas = LocalData.Instance.gunDatas;
+        itemDatas = LocalData.Instance.itemDatas;
+        towerDatas = LocalData.Instance.towerDatas;
+        listNumberEquip = LocalData.Instance.listNumberEquip;
     }
     public void SetWindowData(int index)
     {

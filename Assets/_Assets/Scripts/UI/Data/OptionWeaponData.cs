@@ -9,7 +9,7 @@ public abstract class OptionWeaponData : OptionItemData
     public int maxAmmo;
     public int buyAmmoCost;
     public bool IsEquip() => isEquip;
-    public void EquipWeapon() => isEquip = true;
-    public void UnequipWeapon() => isEquip = false;
+    public virtual void EquipWeapon() => isEquip = true;
+    public virtual void UnequipWeapon() => isEquip = false;
     public bool IsFullAmmo() => reserveAmmo >= maxAmmo;
 }

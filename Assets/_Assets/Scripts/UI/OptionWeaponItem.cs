@@ -10,6 +10,14 @@ public class OptionWeaponItem : OptionItem<OptionWeaponData>
     public Button equipBtn;
     public override void ReloadOptionItem(int currentCoin)
     {
+        if (data.currentLv == 0)
+        {
+            ammoText.text = string.Empty;
+            upgradeBtn.SetButton("Unlock", data.buyAmmoCost.ToString(), data.CheckBuyItem(currentCoin));
+            buyItemBtn.SetButton(string.Empty, string.Empty, false);
+            equipBtn.gameObject.SetActive(false);
+            return;
+        }
         if (data.IsEquip()) equipBtn.gameObject.SetActive(false);
         else equipBtn.gameObject.SetActive(true);
         ammoText.text = data.reserveAmmo.ToString();

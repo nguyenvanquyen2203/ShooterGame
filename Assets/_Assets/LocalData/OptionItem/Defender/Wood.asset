@@ -18,5 +18,5 @@ MonoBehaviour:
   maxLevel: 3
   upgradeCost: 2000
   upgradeIncrease: 2000
-  description: 
+  description: Wood description
   buyCost: 600

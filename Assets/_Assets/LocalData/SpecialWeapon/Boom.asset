@@ -15,4 +15,5 @@ MonoBehaviour:
   nameWeapon: Boom
   currentOwner: 2
   maxOwner: 10
+  value: 5
   icon: {fileID: 21300000, guid: 2b5d0656ea99691439ee848da9deb04c, type: 3}
