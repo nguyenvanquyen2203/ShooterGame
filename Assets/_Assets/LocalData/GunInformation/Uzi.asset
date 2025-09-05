@@ -17,8 +17,8 @@ MonoBehaviour:
   headPos: {x: 2, y: 0.1, z: 0}
   fireDelayTime: 0.02
   damage: 1
-  magazineSize: 40
-  reserveAmmo: 240
+  magazineSize: 60
+  reserveAmmo: 480
   reloadTime: 1
   recoilAround: {x: 0.75, y: 1.5}
   gunAnimator: {fileID: 22100000, guid: 5593932c7bcc91b4c8d71aa2f120ced3, type: 2}

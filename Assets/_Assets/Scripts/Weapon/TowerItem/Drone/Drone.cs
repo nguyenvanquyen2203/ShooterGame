@@ -16,6 +16,9 @@ public class Drone : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        OptionDefenderData drone = InGameData.Instance.GetTowerBuff("Drone");
+        if (drone.currentLv <= 0) gameObject.SetActive(false);
+        else damage = drone.value;
         anim = GetComponent<Animator>();
     }
     void Start()

@@ -18,9 +18,7 @@ MonoBehaviour:
   maxLevel: 7
   upgradeCost: 200
   upgradeIncrease: 1200
-  description: AK47 description
-  reserveAmmo: 210
+  description: Powerful and precise weapon, great at long range
   maxAmmo: 240
   buyAmmoCost: 200
-  magazineSize: 30
   gunInformation: {fileID: 11400000, guid: 9f3ca0bbf6577be4c8aa2d62b7410060, type: 2}

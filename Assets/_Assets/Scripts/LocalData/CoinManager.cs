@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
@@ -21,9 +22,18 @@ public class CoinManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
+    private void Start()
+    {
+        //OptionWindowManager.Instance.SetCoinText(coin);
+    }
     public int GetCoin() => coin;
     public void SpendCoin(int spendCost)
     {
         coin -= spendCost;
+        OptionWindowManager.Instance.SetCoinText(coin);
+    }
+    public void AddCoin(int coinPlus)
+    {
+        coin += coinPlus;
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Snow : SpecialWeapon
 {
-    public override void ActiveSpWeapon(Vector3 activePos)
+    public override void ActiveSpWeapon(Vector3 activePos, float value)
     {
-        base.ActiveSpWeapon(activePos);
+        base.ActiveSpWeapon(activePos, value);
         transform.position = targetPos;
-        WaveController.Instance.SetSnow(10f);
+        WaveController.Instance.SetSnow(value);
     }
 
     public override void OnCreate()

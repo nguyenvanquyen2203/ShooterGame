@@ -21,7 +21,7 @@ public abstract class OptionItemData : ScriptableObject
         }
         return tempCoin;
     }*/
-    public void UpgradeItem()
+    public virtual void UpgradeItem()
     {
         currentLv++;
         upgradeCost += upgradeIncrease;

@@ -18,8 +18,7 @@ MonoBehaviour:
   maxLevel: 7
   upgradeCost: 1000
   upgradeIncrease: 1000
-  description: FirePotion description
-  reserveAmmo: 10
+  description: Burns big groups of monster.
   maxAmmo: 10
   buyAmmoCost: 600
   data: {fileID: 11400000, guid: 2d01fbe56ea49e2429ad555b43ab9339, type: 2}

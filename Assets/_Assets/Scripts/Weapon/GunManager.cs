@@ -80,6 +80,11 @@ public class GunManager : MonoBehaviour
         //Set Bullet/reserveAmmo UI
         gunCtrl.SetGun(bulletPerAmmo[currentIndexGun].Item1, bulletPerAmmo[currentIndexGun].Item2);
     }
+    public (GunInformation, Vector3) GetGunRandom()
+    {
+        int randomIndex = Random.Range(0, gunInfos.Count);
+        return (gunInfos[randomIndex], Vector3.zero);
+    } 
 }
 
 [System.Serializable]

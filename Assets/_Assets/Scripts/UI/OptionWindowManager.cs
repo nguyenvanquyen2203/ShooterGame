@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class OptionWindowManager : MonoBehaviour
 {
     private static OptionWindowManager instance;
     public static OptionWindowManager Instance { get { return instance; } }
+    public TextMeshProUGUI coinTxt;
     public OptionTowerItem towerItemPrefab;
     public OptionWeaponItem weaponItemPrefab;
     public EquipManager equipManager;
@@ -124,4 +125,9 @@ public class OptionWindowManager : MonoBehaviour
     {
         descriptionPanel.ActiveDescription(sprite, namePanel, description);
     }
+    private void OnEnable()
+    {
+        coinTxt.text = CoinManager.Instance.GetCoin().ToString();
+    }
+    public void SetCoinText(int currentCoin) => coinTxt.text = currentCoin.ToString();
 }

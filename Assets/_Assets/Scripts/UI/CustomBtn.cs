@@ -30,11 +30,9 @@ public class CustomBtn : MonoBehaviour
     private void ActiveButton()
     {
         button.interactable = true;
-        img.color = new Color(1f, 1f, 1f);
     }
     private void DisactiveButton()
     {
         button.interactable = false;
-        img.color = new Color(.5f, .5f, .5f);
     }
 }

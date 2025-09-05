@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public abstract class PlayerHealth : MonoBehaviour,IHealth
 {
     public float maxHP;
-    private float currentHp;
+    protected float currentHp;
     public Slider hpSlider;
     private void OnEnable()
     {

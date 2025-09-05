@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialManager : MonoBehaviour
+public class SpecialManager : WeaponCollectItem
 {
     public List<SpecialWeaponIcon> listIcon;
     private List<SpecialWeaponData> listSpecicalWeaponData;    
@@ -35,7 +35,9 @@ public class SpecialManager : MonoBehaviour
     public void UseSpWeapon(int index, Vector3 activePos)
     {
         SpecialWeapon spItem = PoolManager.Instance.Get<SpecialWeapon>(listSpecicalWeaponData[index - 1].nameWeapon);
-        spItem.ActiveSpWeapon(activePos);
+        spItem.ActiveSpWeapon(activePos, listSpecicalWeaponData[index - 1].value);
+        listSpecicalWeaponData[index - 1].currentOwner--;
+        listIcon[index - 1].ReloadSpWeaponIcon(listSpecicalWeaponData[index - 1].currentOwner);
     }
     public void Cooldown(float cooldownTime)
     {
@@ -59,5 +61,32 @@ public class SpecialManager : MonoBehaviour
 
         yield return null;
     }
+    public Vector3 GetSpWeaponIconPos(string nameWeapon)
+    {
+        for (int i = 0; i < listSpecicalWeaponData.Count; i++)
+        {
+            if (listSpecicalWeaponData[i].nameWeapon == nameWeapon) return Camera.main.ScreenToWorldPoint(listIcon[i].transform.position);
+        }
+        return Vector3.zero;
+    }
+    public (SpecialWeaponData, Vector3) GetSpWeaponRandom()
+    {
+        int randomIndex = Random.Range(0, listSpecicalWeaponData.Count);
+        return (listSpecicalWeaponData[randomIndex], Camera.main.ScreenToWorldPoint(listIcon[randomIndex].transform.position));
+    }
 
+    public override void WeaponCollect(string nameWeapon)
+    {
+        Debug.Log("Collect special weapon with name " + nameWeapon);
+        for (int i = 0; i < listSpecicalWeaponData.Count; i++)
+        {
+            var spWeapon = listSpecicalWeaponData[i];
+            if (spWeapon.nameWeapon == nameWeapon)
+            {
+                spWeapon.currentOwner++;
+                listIcon[i].ReloadSpWeaponIcon(listSpecicalWeaponData[i].currentOwner);
+                return;
+            }
+        }
+    }
 }

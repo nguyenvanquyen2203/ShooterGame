@@ -10,7 +10,11 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+    private void Start()
+    {
         foreach (var enemy in listEnemy) PoolManager.Instance.CreatePool(enemy.enemyPool);
+        
     }
     public EnemyStatus GetEnemyStatus(string nameEnemy)
     {

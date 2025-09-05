@@ -42,4 +42,8 @@ public class MouseInputProvider : MonoBehaviour
     {
         WeaponManager.Instance.StopClickAction();
     }
+    private void OnDisable()
+    {
+        mouse.Disable();
+    }
 }

@@ -42,6 +42,7 @@ public class Demon : Enemy
     public override void AttackEvent()
     {
         var hit = Physics2D.Raycast(transform.position, Vector2.left, 0.6f, playerLayer);
+        if (hit.collider == null) return;
         PlayerHealth health = hit.transform.GetComponent<PlayerHealth>();
         health.TakeHit(status.damage, false);
     }

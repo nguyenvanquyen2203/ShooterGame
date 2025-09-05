@@ -1,33 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
-public class CoinItem : BaseItem
+public class CoinItem : ItemBox
 {
-    private CoinPool coin;
-    private void Awake()
+    protected ItemBox itemBox;
+    public override void CollectAction()
     {
-        IntinializeItem();
-        coin = GetComponent<CoinPool>();
+        GameManager.Instance.GetCoin(5);
+        boxItem.OnReturnToPool();
+        //gameObject.SetActive(false);
     }
+
     public override void CollectEvent()
     {
         SingleEffect effect = PoolManager.Instance.Get<SingleEffect>("CoinCollect");
         effect.ActiveEffect(transform.position);
         CollectMove();
     }
-    public void CollectMove()
+    private void OnEnable()
     {
-        transform.DOMove(GameManager.Instance.GetCoinIconPos(), 2f).SetEase(Ease.OutQuad).OnComplete(() =>
-        {
-            coin.OwnerPool.ReturnToPool(coin);
-            //gameObject.SetActive(false);
-        });
+        gravity = -9.8f * multiplyG;
+        isCollect = false;
+        startV = Mathf.Sqrt(-2f * h * gravity);
+        currentV = startV;
+        xMove = Random.Range(-1f, 1f);
+        originalPosition = transform.position;
     }
-    public override void InteractionItem()
+    public override void ActiveItem(Vector3 activePos)
     {
-        base.InteractionItem();
-        CollectEvent();
+        base.ActiveItem(activePos);
+        gravity = -9.8f * multiplyG;
+        isCollect = false;
+        startV = Mathf.Sqrt(-2f * h * gravity);
+        currentV = startV;
+        xMove = Random.Range(-1f, 1f);
+        originalPosition = activePos;
+    }
+    
+
+    public override void LandingEvent()
+    {
+        CollectMove();
+        isCollect = true;
+        return;
     }
 }

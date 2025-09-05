@@ -18,8 +18,7 @@ MonoBehaviour:
   maxLevel: 7
   upgradeCost: 1000
   upgradeIncrease: 1000
-  description: Ice description
-  reserveAmmo: 10
+  description: Create blizzard and slow down monsters.
   maxAmmo: 10
   buyAmmoCost: 600
   data: {fileID: 11400000, guid: feefaea3d976e9744af6fde978fc846a, type: 2}

@@ -6,7 +6,6 @@ public class ThrowSpWeapon : SpecialWeapon
 {
     public string nameExplosion;
     public float xVelocity = 20f;
-    public float damage;
     private float yVelocity;
     private Vector3 moveVector;
     private float gravity = -9.81f * 3;
@@ -31,7 +30,7 @@ public class ThrowSpWeapon : SpecialWeapon
     public void ActiveEffect()
     {
         SpExplosion effect = PoolManager.Instance.Get<SpExplosion>(nameExplosion);
-        effect.ActiveExplosion(transform.position, damage);
+        effect.ActiveExplosion(transform.position, value);
         OwnerPool.ReturnToPool(this);
     }
 

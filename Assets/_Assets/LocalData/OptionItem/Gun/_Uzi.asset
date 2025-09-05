@@ -14,13 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Uzi
   itemImage: {fileID: 754778598, guid: 89bdee847c429bc46aed9f5564895ca3, type: 3}
-  currentLv: 0
+  currentLv: 1
   maxLevel: 7
-  upgradeCost: 0
+  upgradeCost: 1200
   upgradeIncrease: 1200
-  description: Uzi description
-  reserveAmmo: 0
+  description: Very fast. More effective at close range
   maxAmmo: 240
   buyAmmoCost: 200
-  magazineSize: 40
   gunInformation: {fileID: 11400000, guid: ef996780d4927b34b8de21e3ea70e37d, type: 2}

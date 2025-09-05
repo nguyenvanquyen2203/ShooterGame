@@ -7,7 +7,6 @@ public class SpecialWeaponData : ScriptableObject
 {
     public string nameWeapon;
     public int currentOwner;
-    public int maxOwner;
     public float value;
     public Sprite icon;
     public void SetGunInfo(string nameWeapon, Sprite icon, float value, int currentOwner, int maxOwner)
@@ -16,6 +15,5 @@ public class SpecialWeaponData : ScriptableObject
         this.icon = icon;
         this.value = value;
         this.currentOwner = currentOwner;
-        this.maxOwner = maxOwner;
     }
 }

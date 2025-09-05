@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ced4dab8be5a5419ede5c4aeb8587f, type: 3}
   m_Name: Demon
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 1.5
   maxHp: 5
   damage: 1
   delayAttack: 2
   enemyPool:
     poolName: Demon
     prefab: {fileID: 7113898304194325799, guid: f8b668acfc7fcec4da3535af0dcfda3a, type: 3}
-    initialSize: 5
+    initialSize: 20

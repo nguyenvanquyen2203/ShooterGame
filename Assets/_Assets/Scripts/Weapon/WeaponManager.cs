@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : WeaponCollectItem
 {
     private static WeaponManager instance;
     public static WeaponManager Instance { get { return instance; } }
@@ -102,14 +102,16 @@ public class WeaponManager : MonoBehaviour
     private void SetSpecialWeapon(int index)
     {
         if (index > InGameData.Instance.specialItemEquips.Count) return;
-        if (specialWeaponCooldown > 0) return; 
+        if (specialWeaponCooldown > 0) return;
+        SpecialWeaponData spWeapon = InGameData.Instance.GetSpWeapon(index - 1);
+        if (spWeapon.currentOwner <= 0) return;
         if (index == currentIndexWeapon)
         {
             CancelSpecialWeapon();
             return;
         }
         currentIndexWeapon = index;
-        specialWeapon.ActiveSpecialWeapon(InGameData.Instance.GetSpWeapon(currentIndexWeapon - 1).icon);
+        specialWeapon.ActiveSpecialWeapon(spWeapon.icon);
         specialManager.ActiveSpWeapon(currentIndexWeapon);
     }
     public void Reload()
@@ -149,5 +151,35 @@ public class WeaponManager : MonoBehaviour
             CancelSpecialWeapon();
         } 
         else gunCtrl.StopClickAction();
+    }
+    public (GunInformation, Vector3) GetGunRandom()
+    {
+        int randomIndex = Random.Range(0, gunInfos.Count);
+        return (gunInfos[randomIndex], Camera.main.ScreenToWorldPoint(listGunIcon[randomIndex].transform.position));
+    }
+    public override void WeaponCollect(string nameWeapon)
+    {
+        Debug.Log("Collect special weapon with name " + nameWeapon);
+        for (int i = 0; i < gunInfos.Count; i++)
+        {
+            var gun = gunInfos[i];
+            if (gun.nameGun == nameWeapon)
+            {
+                (int a, int b) = bulletPerAmmo[i];
+                b += gun.magazineSize;
+                bulletPerAmmo[i] = (a, b);
+                //listGunIcon[i].ReloadSpWeaponIcon(listSpecicalWeaponData[i].currentOwner);
+                listGunIcon[i].SetIcon(gunInfos[i].image, b);
+                return;
+            }
+        }
+    }
+    public void SaveGunBullet()
+    {
+        for (int i = 0; i < gunInfos.Count; i++)
+        {
+            (int bullet, int ammo) = bulletPerAmmo[i];
+            gunInfos[i].reserveAmmo = bullet + ammo;
+        }
     }
 }

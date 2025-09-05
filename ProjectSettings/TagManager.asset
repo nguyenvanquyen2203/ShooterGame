@@ -53,3 +53,6 @@ TagManager:
   - name: UI
     uniqueID: 3983591483
     locked: 0
+  - name: FontBG
+    uniqueID: 290157193
+    locked: 0

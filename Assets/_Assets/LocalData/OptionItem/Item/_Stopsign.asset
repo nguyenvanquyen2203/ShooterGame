@@ -18,8 +18,7 @@ MonoBehaviour:
   maxLevel: 7
   upgradeCost: 1000
   upgradeIncrease: 1000
-  description: Stopsign description
-  reserveAmmo: 10
+  description: Monster might be evil, but they still respect traffic sign.
   maxAmmo: 10
   buyAmmoCost: 600
   data: {fileID: 11400000, guid: 43d2338f781917b4c869061d9dfdfe53, type: 2}

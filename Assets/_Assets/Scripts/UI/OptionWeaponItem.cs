@@ -20,7 +20,7 @@ public class OptionWeaponItem : OptionItem<OptionWeaponData>
         }
         if (data.IsEquip()) equipBtn.gameObject.SetActive(false);
         else equipBtn.gameObject.SetActive(true);
-        ammoText.text = data.reserveAmmo.ToString();
+        ammoText.text = data.GetReserve().ToString();
         string buyContent = data.buyAmmoCost.ToString();
         
         if (data.IsFullAmmo()) buyContent = "MAX";

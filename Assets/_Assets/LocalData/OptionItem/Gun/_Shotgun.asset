@@ -18,9 +18,7 @@ MonoBehaviour:
   maxLevel: 7
   upgradeCost: 1000
   upgradeIncrease: 1000
-  description: Shotgun description
-  reserveAmmo: 45
+  description: Not very fast, but nice spread
   maxAmmo: 45
   buyAmmoCost: 200
-  magazineSize: 9
   gunInformation: {fileID: 11400000, guid: 0459a016c5f81d74091c1a8032ec0caf, type: 2}

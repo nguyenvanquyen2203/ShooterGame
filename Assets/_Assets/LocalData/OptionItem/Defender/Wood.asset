@@ -18,5 +18,7 @@ MonoBehaviour:
   maxLevel: 3
   upgradeCost: 2000
   upgradeIncrease: 2000
-  description: Wood description
+  description: Give your tower more health.
+  value: 1
   buyCost: 600
+  bonusValue: 0.25

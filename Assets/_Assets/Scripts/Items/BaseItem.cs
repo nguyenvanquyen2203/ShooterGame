@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BaseItem : MonoBehaviour
 {
     protected Animator anim;
     protected BoxCollider2D itemCollider;
-    public void ActiveItem(Vector3 activePos)
+    public virtual void ActiveItem(Vector3 activePos)
     {
+        itemCollider = GetComponent<BoxCollider2D>();
         itemCollider.enabled = true;
         transform.position = activePos;
+        gameObject.SetActive(true);
     }
     public void IntinializeItem()
     {

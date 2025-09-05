@@ -18,4 +18,8 @@ public class StopSignDestroy : PlayerHealth
 
         });
     }
+    public void SetHealth(float value)
+    {
+        maxHP = value;
+    }
 }
