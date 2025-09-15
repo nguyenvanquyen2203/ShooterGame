@@ -28,7 +28,7 @@ public class WeaponBoxItem : ItemBox
     }
     public override void CollectAction()
     {
-        Debug.Log("CollectWeapon");
+        //Debug.Log("CollectWeapon");
     }
 
     public override void LandingEvent()
@@ -42,7 +42,6 @@ public class WeaponBoxItem : ItemBox
     {
         transform.DOMove(targetMove, 1f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
-            Debug.Log("Collect SP Weapon");
             weaponCollect.WeaponCollect(nameWeapon);
             gameObject.SetActive(false);
         });
