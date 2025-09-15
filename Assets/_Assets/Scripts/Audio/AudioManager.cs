@@ -61,9 +61,8 @@ public class AudioManager : MonoBehaviour
         if (type == Audio_Type.Music) return audioData.musicVolumn;
         return audioData.SFXVolumn;
     }
-
-    private void Update()
+    public void StopMusic()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) PlaySFX("Drone");
+        musicSounds.StopMusic();
     }
 }

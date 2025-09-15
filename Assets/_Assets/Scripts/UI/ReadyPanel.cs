@@ -27,6 +27,7 @@ public class ReadyPanel : MonoBehaviour
     }
     IEnumerator ReadyCoroutine()
     {
+        //AudioManager.Instance.PlaySFX("Ready");
         panel.DOScaleY(1f, 1f).OnComplete(() => {
             panel.gameObject.SetActive(true);
         });
@@ -34,6 +35,7 @@ public class ReadyPanel : MonoBehaviour
         int indexString = 0;
         while (indexString < readyNumber.Count)
         {
+            AudioManager.Instance.PlaySFX("Ready");
             text.text = readyNumber[indexString];
             anim.Play("NumberAnim", -1,0f);
             yield return new WaitForSeconds(1f);
@@ -42,6 +44,7 @@ public class ReadyPanel : MonoBehaviour
         indexString = 0;
         while (indexString < readyWord.Count)
         {
+            AudioManager.Instance.PlaySFX("Ready");
             text.text = readyWord[indexString];
             anim.Play("WordAnim", -1, 0f);
             yield return new WaitForSeconds(1f);

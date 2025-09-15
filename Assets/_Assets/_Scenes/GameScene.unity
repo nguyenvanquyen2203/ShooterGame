@@ -17856,7 +17856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &699930639
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17917,7 +17917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699930638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8900146, y: -0.68566895, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20276,6 +20276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   box: {fileID: 1555251114}
   boxItem: {fileID: 699930643}
+  fallEffect: {fileID: 1736795743}
   speed: 5
 --- !u!1 &1069235950
 GameObject:
@@ -33166,7 +33167,7 @@ Animator:
   m_GameObject: {fileID: 1736795740}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8ed3f3a9fe75a2046be51a452053e0ea, type: 2}
+  m_Controller: {fileID: 9100000, guid: 37291be5fdacf7945ace4390272bcf6e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

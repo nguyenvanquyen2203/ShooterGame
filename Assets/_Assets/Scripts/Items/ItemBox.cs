@@ -28,6 +28,7 @@ public abstract class ItemBox : BaseItem
     }
     public override void InteractionItem()
     {
+        AudioManager.Instance.PlaySFX("CollectCoin");
         isCollect = true;
         base.InteractionItem();
         CollectEvent();

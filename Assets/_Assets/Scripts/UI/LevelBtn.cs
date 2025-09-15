@@ -23,6 +23,7 @@ public class LevelBtn : MonoBehaviour
     public void LoadScene()
     {
         SaveMapData();
+        AudioManager.Instance.StopMusic();
         GameMenu.Instance.LoadGameScene();
     }
 }

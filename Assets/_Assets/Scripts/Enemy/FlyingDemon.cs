@@ -38,7 +38,7 @@ public class FlyingDemon : Enemy
     }
     public override void AttackEvent()
     {
-        bullet.ActiveBullet(transform.position + Vector3.right * -.75f + Vector3.up * -.3f, tower);
+        bullet.ActiveBullet(transform.position + Vector3.right * -.75f + Vector3.up * -.3f, tower, true);
     }
     public void IntinialEnemy()
     {

@@ -8,6 +8,7 @@ public class Spikes : MonoBehaviour
     public float delay;
     private float cooldown;
     private float damage;
+    private bool isSpiked;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class Spikes : MonoBehaviour
         if (spikes.currentLv <= 0) gameObject.SetActive(false);
         else damage = spikes.value;
         cooldown = delay;
+        isSpiked = false;
     }
 
     // Update is called once per frame
@@ -34,7 +36,13 @@ public class Spikes : MonoBehaviour
                 {
                     Enemy enemy = hit.collider.gameObject.GetComponent<Enemy>();
                     enemy.TakeHit(damage, false);
+                    isSpiked = true;
                 }
+            }
+            if (isSpiked)
+            {
+                isSpiked = false;
+                AudioManager.Instance.PlaySFX("SpikeAttack");
             }
         }
     }

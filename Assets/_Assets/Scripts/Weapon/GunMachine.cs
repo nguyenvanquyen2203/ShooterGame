@@ -97,6 +97,7 @@ public class GunMachine : StateMachine
     public void Shoot()
     {
         if (numberBullet <= 0) return;
+        AudioManager.Instance.PlaySFX($"{currentGun.nameGun + "Shoot"}");
         numberBullet--;
         ShowBullet();
         canAttack = false;

@@ -32,6 +32,7 @@ public class JumpSlime : Enemy
         if (hit.collider != null)
         {
             anim.Play("Explosion");
+            //AudioManager.Instance.PlaySFX("BoomExplosion");
             /*if (!isAttack)
             {
                 xContact = (hit.transform.position.x + (-direction.x) * hit.collider.GetComponent<BoxCollider2D>().bounds.size.x / 2);
@@ -84,6 +85,7 @@ public class JumpSlime : Enemy
     } 
     public void Explosion()
     {
+        PlayAudio();
         var hit = Physics2D.Raycast(transform.position, Vector2.left, status.distanceAttack, playerLayer);
         if (hit.collider == null) return;
         PlayerHealth health = hit.transform.GetComponent<PlayerHealth>();

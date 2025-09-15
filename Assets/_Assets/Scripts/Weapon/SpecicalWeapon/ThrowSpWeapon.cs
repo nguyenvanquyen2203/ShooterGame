@@ -28,6 +28,7 @@ public class ThrowSpWeapon : SpecialWeapon
     public void ActiveEffect()
     {
         SpExplosion effect = PoolManager.Instance.Get<SpExplosion>(nameExplosion);
+        AudioManager.Instance.PlaySFX(nameExplosion);
         effect.ActiveExplosion(transform.position, value);
         OwnerPool.ReturnToPool(this);
     }

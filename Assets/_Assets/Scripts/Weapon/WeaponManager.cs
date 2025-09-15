@@ -121,6 +121,7 @@ public class WeaponManager : WeaponCollectItem, IObserver<PauseGameAction>
     }
     public void Reload()
     {
+        AudioManager.Instance.PlaySFX($"{gunInfos[currentIndexGun].nameGun + "Reload"}");
         int numberBullet = gunCtrl.GetBullet();
         (int bulletInMagazine, int reserveAmmo) = bulletPerAmmo[currentIndexGun];
         int numberBulletReload = Mathf.Min(gunInfos[currentIndexGun].magazineSize - numberBullet, reserveAmmo);

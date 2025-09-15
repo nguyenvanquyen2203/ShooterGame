@@ -42,13 +42,14 @@ public class Drone : MonoBehaviour
     }
     public void Attack(Enemy enemy)
     {
+        AudioManager.Instance.PlaySFX("Drone");
         cooldownTime = attackDelay;
         targetEnemy = enemy;
         anim.Play("Attack");
     }
     public void AttackEvent()
     {
-        bullet.ActiveBullet(transform.position + Vector3.right * .5f, targetEnemy.transform);
+        bullet.ActiveBullet(transform.position + Vector3.right * .5f, targetEnemy.transform, false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

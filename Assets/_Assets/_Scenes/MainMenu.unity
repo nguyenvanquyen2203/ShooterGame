@@ -3600,11 +3600,71 @@ MonoBehaviour:
   - name: Landing
     clip: {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
     volumn: 1
-    pitch: 1
+    pitch: 3
   - name: Drone
     clip: {fileID: 8300000, guid: f01501195a37906499972e221ddcb11e, type: 3}
     volumn: 1
     pitch: 2
+  - name: AK47Shoot
+    clip: {fileID: 8300000, guid: 889e6cd3cae81894d8413c71c25ea2c5, type: 3}
+    volumn: 1
+    pitch: 2
+  - name: AK47Reload
+    clip: {fileID: 8300000, guid: 76a46ec7c57f7ce499555c87bbb4a5ec, type: 3}
+    volumn: 1
+    pitch: 2
+  - name: UziReload
+    clip: {fileID: 8300000, guid: d97387dfebf22e645850529dcb930f41, type: 3}
+    volumn: 1
+    pitch: 2
+  - name: ShotGunReload
+    clip: {fileID: 8300000, guid: 0561cc7a67336d741bba769f4f03cd72, type: 3}
+    volumn: 1
+    pitch: 2
+  - name: ShotGunShoot
+    clip: {fileID: 8300000, guid: 171c41f2f67660e459bff391a85fd635, type: 3}
+    volumn: 1
+    pitch: 2
+  - name: UziShoot
+    clip: {fileID: 8300000, guid: ca2eac269f2aad34a9ac32b7b5dfab29, type: 3}
+    volumn: 0.5
+    pitch: 2
+  - name: ChangeGun
+    clip: {fileID: 8300000, guid: 16f73ae8215dce1498f16119e7637fc7, type: 3}
+    volumn: 0.5
+    pitch: 1.5
+  - name: CollectItem
+    clip: {fileID: 8300000, guid: 7237defddc09bbf49bc835f909d12e43, type: 3}
+    volumn: 1
+    pitch: 1
+  - name: CollectCoin
+    clip: {fileID: 8300000, guid: c13d71f180af77d45a98653cc0e295c1, type: 3}
+    volumn: 1
+    pitch: 1
+  - name: BoxBreak
+    clip: {fileID: 8300000, guid: 76b76834bbd34d647bafc23e88bba583, type: 3}
+    volumn: 1
+    pitch: 1
+  - name: Ready
+    clip: {fileID: 8300000, guid: e52c635f50d91304b930518d4e481637, type: 3}
+    volumn: 1
+    pitch: 1
+  - name: SpikeAttack
+    clip: {fileID: 8300000, guid: 1aa7a2297f4a6aa43a6feb736f3f0d89, type: 3}
+    volumn: 1
+    pitch: 1
+  - name: BoomExplosion
+    clip: {fileID: 8300000, guid: 34fb684da58766644a0d643fd9c11df5, type: 3}
+    volumn: 1
+    pitch: 3
+  - name: FirePotionExplosion
+    clip: {fileID: 8300000, guid: 9d57042de35209544b50b25f97320bc8, type: 3}
+    volumn: 1
+    pitch: 3
+  - name: Upgrade
+    clip: {fileID: 8300000, guid: 83f10301ca748bb45a8fcc03af7b2eca, type: 3}
+    volumn: 1
+    pitch: 1.5
 --- !u!1 &967481253
 GameObject:
   m_ObjectHideFlags: 0

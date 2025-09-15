@@ -28,6 +28,7 @@ public abstract class OptionItem<T> : MonoBehaviour where T : OptionItemData
     public virtual void UpgradeItem()
     {
         CoinManager.Instance.SpendCoin(data.upgradeCost);
+        AudioManager.Instance.PlaySFX("Upgrade");
         data.UpgradeItem();
         OptionWindowManager.Instance.ReloadWindow();
     }

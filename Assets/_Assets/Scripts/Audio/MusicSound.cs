@@ -26,4 +26,8 @@ public class MusicSound
         volumn = _volumn;
         if (playingMusic != null) src.volume = playingMusic.volumn * volumn;
     }
+    public void StopMusic()
+    {
+        src.Stop();
+    }
 }

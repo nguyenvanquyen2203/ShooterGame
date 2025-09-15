@@ -17,6 +17,8 @@ public class StopSign : SpecialWeapon
     private void OnEnable()
     {
         transform.position = Vector3.up * 6f + targetPos.x * Vector3.right;
-        transform.DOMoveY(Random.Range(-3f, -2f), 1f).SetEase(Ease.InCubic);
+        transform.DOMoveY(Random.Range(-3f, -2f), 1f).SetEase(Ease.InCubic).OnComplete(() => {
+            AudioManager.Instance.PlaySFX("Landing");
+        });
     }    
 }

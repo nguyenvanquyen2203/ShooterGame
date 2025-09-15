@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour, IObserver<PauseGameAction>
     private void Start()
     {
         PauseGameController.Instance.AddObserver(this);
-        AudioManager.Instance.PlayMusic("GameMusic");
         readyPanel.SetActive(true);
         isStart = false;
         Time.timeScale = 1f;
@@ -60,6 +59,7 @@ public class GameManager : MonoBehaviour, IObserver<PauseGameAction>
     public void StartGame()
     {
         WaveController.Instance.SpawnWave(0);
+        AudioManager.Instance.PlayMusic("GameMusic");
         cooldownPigeon = 10f;
         isStart = true;
     }

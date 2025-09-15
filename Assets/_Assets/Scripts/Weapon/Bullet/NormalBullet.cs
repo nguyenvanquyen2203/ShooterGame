@@ -12,9 +12,13 @@ public class NormalBullet : MonoBehaviour
     private LayerMask targetLayer;
     private string currentAnim;
     private float normalDir;
+    private bool isExplosion;
+    private AudioSource src;
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        src = GetComponent<AudioSource>();
+
     }
     public void SetBullet(float speed, float damage, LayerMask targetLayer)
     {
@@ -22,9 +26,10 @@ public class NormalBullet : MonoBehaviour
         this.damage = damage;
         this.targetLayer = targetLayer;
     }
-    public void ActiveBullet(Vector3 startPos, Transform target)
+    public void ActiveBullet(Vector3 startPos, Transform target, bool isExplosion)
     {
         //Calculator direction vector
+        this.isExplosion = isExplosion;
         currentAnim = "Idle";
         if (startPos.x < target.position.x) normalDir = 1;
         else normalDir = -1;
@@ -52,8 +57,13 @@ public class NormalBullet : MonoBehaviour
             var hit = Physics2D.BoxCast(transform.position, Vector2.one, 0f, Vector2.zero, 0f, targetLayer);
             if (hit.collider != null)
                 hit.transform.GetComponent<IHealth>().TakeHit(damage, false);
+            currentAnim = "Explosion";
+            if (src != null)
+            {
+                src.volume = AudioManager.Instance.GetVolumn(AudioManager.Audio_Type.SFX);
+                src.Play();
+            }
         }
-        currentAnim = "Explosion";
         anim.Play(currentAnim);
     }
     public void DisableBullet()

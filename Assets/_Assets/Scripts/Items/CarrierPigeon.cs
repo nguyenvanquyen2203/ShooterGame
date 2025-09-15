@@ -6,6 +6,7 @@ public class CarrierPigeon : MonoBehaviour
 {
     public SpriteRenderer box;
     public BoxItem boxItem;
+    public Transform fallEffect;
     private Vector3 target;
     public float speed;
     private bool shipping;
@@ -32,6 +33,9 @@ public class CarrierPigeon : MonoBehaviour
         shipping = false;
         box.gameObject.SetActive(false);
         boxItem.Active(box.transform.position);
+        AudioManager.Instance.PlaySFX("Landing");
         target = new Vector3(-12f, 7f, 0f);
+        fallEffect.position = box.transform.position - Vector3.up * 0.4f;
+        fallEffect.gameObject.SetActive(true);
     }
 }

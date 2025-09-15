@@ -21,7 +21,7 @@ public class GunPutAway : BaseState<GunMachine>
 
     public override void OnExit()
     {
-
+        AudioManager.Instance.PlaySFX("ChangeGun");
     }
 
     public override void OnTriggerEvent(StateMachine.TriggerEventType type)

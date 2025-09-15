@@ -13,6 +13,7 @@ public abstract class Enemy : PoolObject, IHealth
         Cool
     }
     protected Animator anim;
+    protected AudioSource src;
     protected SpriteRenderer img;
     protected BoxCollider2D enemyCollider;
     public Slider slider;
@@ -34,6 +35,7 @@ public abstract class Enemy : PoolObject, IHealth
         anim = GetComponent<Animator>();
         img = GetComponent<SpriteRenderer>();
         enemyCollider = GetComponent<BoxCollider2D>();
+        src = GetComponent<AudioSource>();
         status = _status;
     }
     public virtual void ActiveEnemy(Vector3 position, WaveController controller)
@@ -82,6 +84,11 @@ public abstract class Enemy : PoolObject, IHealth
         controller.RemoveEnemy(this);
         if (currentEffect == SpEffect.Burn) controller.RemoveBurnEnemy(this);
         StopFreeze();
+    }
+    protected void PlayAudio()
+    {
+        src.volume = AudioManager.Instance.GetVolumn(AudioManager.Audio_Type.SFX);
+        src.Play();
     }
     public void Disactive()
     {

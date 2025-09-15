@@ -25,6 +25,8 @@ public class Demon : Enemy
             {
                 cooldownAttack = status.delayAttack;
                 anim.Play("Attack");
+                PlayAudio();
+                //AudioManager.Instance.PlaySFX("DemonAttack");
             }
         }
         else

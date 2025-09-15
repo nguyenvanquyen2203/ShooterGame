@@ -20,6 +20,7 @@ public class BoxItem : BaseItem
     }
     public override void CollectEvent()
     {
+        AudioManager.Instance.PlaySFX("BoxBreak");
         GameManager.Instance.ActiveBoxEffect(transform.position);
         int randomNumber = Random.Range(0, 100);
         if (randomNumber < 60)

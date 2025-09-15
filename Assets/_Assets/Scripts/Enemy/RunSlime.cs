@@ -38,6 +38,7 @@ public class RunSlime : Enemy
                 if (transform.position.x - xContact <= .1f)
                 {
                     anim.Play("Explosion");
+                    //AudioManager.Instance.PlaySFX("BoomExplosion");
                     return;
                 } 
                 yVelocity += gravity * Time.deltaTime;
@@ -62,6 +63,7 @@ public class RunSlime : Enemy
     }
     public void Explosion()
     {
+        PlayAudio();
         var hit = Physics2D.Raycast(transform.position, Vector2.left, status.distanceAttack, playerLayer);
         if (hit.collider == null) return;
         PlayerHealth health = hit.transform.GetComponent<PlayerHealth>();
