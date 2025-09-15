@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IObserver<PauseGameAction>
 {
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
@@ -14,7 +12,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI coinTxt;
     public GameObject readyPanel;
     public OverPanel overPanel;
-    public float cooldownPigeon;
+    private float cooldownPigeon;
     private bool isStart;
     // Start is called before the first frame update
     private void Awake()
@@ -23,6 +21,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        PauseGameController.Instance.AddObserver(this);
+        AudioManager.Instance.PlayMusic("GameMusic");
         readyPanel.SetActive(true);
         isStart = false;
         Time.timeScale = 1f;
@@ -70,5 +70,18 @@ public class GameManager : MonoBehaviour
         CoinManager.Instance.AddCoin(currentCoin);
         WeaponManager.Instance.SaveGunBullet();
         overPanel.ActiveOverPanel(currentCoin.ToString(), isWin);
+    }
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+    public void OnNotify(PauseGameAction obj)
+    {
+        if (obj == PauseGameAction.Pause) PauseGame();
+        else ResumeGame();
     }
 }

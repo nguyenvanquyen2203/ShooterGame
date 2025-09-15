@@ -9,6 +9,7 @@ public class InGameData : MonoBehaviour
     public List<GunInformation> gunEquips;
     public List<SpecialWeaponData> specialItemEquips;
     public List<OptionDefenderData> towers;
+    public MapData mapData;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -53,4 +54,6 @@ public class InGameData : MonoBehaviour
         Debug.Log("Doesn't exist tower buff with name " + nameTowerBuff);
         return null;
     }
+    public void SetMapData(MapData data) => mapData = data;
+    public MapData GetMapData() => mapData;
 }

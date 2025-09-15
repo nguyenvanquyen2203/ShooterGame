@@ -17,8 +17,7 @@ public class GunIdle : BaseState<GunMachine>
     public override void OnEnter()
     {
         idleTime = 1.5f;
-        machine.ChangeAnim("GunIdle");
-        machine.ResetIdleTime();
+        machine.ChangeAnim(PlayerAnimationState.PlayerIdleAnim);
     }
 
     public override void OnExit()

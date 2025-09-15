@@ -5,8 +5,9 @@ using UnityEngine;
 public class SpecialManager : WeaponCollectItem
 {
     public List<SpecialWeaponIcon> listIcon;
-    private List<SpecialWeaponData> listSpecicalWeaponData;    
-
+    private List<SpecialWeaponData> listSpecicalWeaponData;
+    private SpecialWeapon throwWeapon;
+    public Transform handTrf;
     private int currentSpWeapon;
     private void Awake()
     {
@@ -34,10 +35,26 @@ public class SpecialManager : WeaponCollectItem
     }
     public void UseSpWeapon(int index, Vector3 activePos)
     {
-        SpecialWeapon spItem = PoolManager.Instance.Get<SpecialWeapon>(listSpecicalWeaponData[index - 1].nameWeapon);
-        spItem.ActiveSpWeapon(activePos, listSpecicalWeaponData[index - 1].value);
-        listSpecicalWeaponData[index - 1].currentOwner--;
-        listIcon[index - 1].ReloadSpWeaponIcon(listSpecicalWeaponData[index - 1].currentOwner);
+        SpecialWeaponData spData = listSpecicalWeaponData[index - 1];
+        SpecialWeapon spItem = PoolManager.Instance.Get<SpecialWeapon>(spData.nameWeapon);
+        spItem.ActiveSpWeapon(activePos, spData.value);
+
+        // Check sp weapon to do throw animation
+        if (spData.nameWeapon == "Boom" || spData.nameWeapon == "FirePotion")
+        {
+            // Save SP weapon and do throw animation
+            GunMachine.Instance.ChangeState(GunMachine.Instance.ThrowState);
+            throwWeapon = spItem;
+        }
+        else spItem.gameObject.SetActive(true);
+
+        spData.currentOwner--;
+        listIcon[index - 1].ReloadSpWeaponIcon(spData.currentOwner);
+    }
+    public void ThrowWeapon()
+    {
+        throwWeapon.transform.position = handTrf.position;
+        throwWeapon.gameObject.SetActive(true);
     }
     public void Cooldown(float cooldownTime)
     {

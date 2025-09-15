@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ThrowSpWeapon : SpecialWeapon
@@ -12,9 +10,9 @@ public class ThrowSpWeapon : SpecialWeapon
     private float timeMove;
     private void OnEnable()
     {
-        timeMove = (targetPos.x + 11f) / xVelocity;
-        yVelocity = (targetPos.y - gravity * timeMove * timeMove / 2) / timeMove;
-        transform.position = Vector3.right * -11f;
+        timeMove = (targetPos.x - transform.position.x) / xVelocity;
+        yVelocity = ((targetPos.y - transform.position.y) - gravity * timeMove * timeMove / 2) / timeMove;
+        //transform.position = Vector3.right * -11f;
         moveVector = Vector3.up * yVelocity;
     }
 

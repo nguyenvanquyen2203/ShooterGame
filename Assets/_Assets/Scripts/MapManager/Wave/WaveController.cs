@@ -96,4 +96,5 @@ public class WaveController : MonoBehaviour
     {
         GameManager.Instance.GameOver(true);
     }
+    public void SetWaveData(List<WaveData> data) => waveDatas = data;
 }

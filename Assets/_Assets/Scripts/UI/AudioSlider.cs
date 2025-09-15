@@ -9,7 +9,7 @@ public class AudioSlider : MonoBehaviour
     public Sprite quietImg;
     public Image audioIcon;
     private Slider audioSlider;
-    //public AudioManager.Audio_Type audioType;
+    public AudioManager.Audio_Type audioType;
     private float volumn;
     // Start is called before the first frame update
     private void Awake()
@@ -18,8 +18,8 @@ public class AudioSlider : MonoBehaviour
     }
     private void OnEnable()
     {
-        //audioSlider.value = volumn;
-        volumn = audioSlider.value;
+        volumn = AudioManager.Instance.GetVolumn(audioType);
+        audioSlider.value = volumn;
         UpdateUI();
     }
     private void Quiet()
@@ -42,5 +42,6 @@ public class AudioSlider : MonoBehaviour
             Quiet();
         }
         else Play();
+        AudioManager.Instance.SetVolumn(volumn, audioType);
     }
 }

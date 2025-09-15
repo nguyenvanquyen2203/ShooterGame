@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class MouseInputProvider : MonoBehaviour
+public class MouseInputProvider : MonoBehaviour, IObserver<PauseGameAction>
 {
     private static MouseInputProvider instance;
     public static MouseInputProvider Instance { get { return instance; } }
@@ -12,6 +12,7 @@ public class MouseInputProvider : MonoBehaviour
     public Camera _mainCamera;
     public LayerMask monsterLayer;
     public LayerMask itemLayer;
+    private bool isPause;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -22,8 +23,13 @@ public class MouseInputProvider : MonoBehaviour
         mouse.performed += ctx => ClickAction();
         mouse.canceled += ctx => StopClickAction();
     }
+    private void Start()
+    {
+        PauseGameController.Instance.AddObserver(this);
+    }
     private void ClickAction()
     {
+        if (isPause) return;
         // Create a ray from the camera through the mouse position
         Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 
@@ -45,5 +51,10 @@ public class MouseInputProvider : MonoBehaviour
     private void OnDisable()
     {
         mouse.Disable();
+    }
+
+    public void OnNotify(PauseGameAction obj)
+    {
+        isPause = obj == PauseGameAction.Pause;
     }
 }

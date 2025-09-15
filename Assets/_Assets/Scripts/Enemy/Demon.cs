@@ -18,7 +18,7 @@ public class Demon : Enemy
     }
     public override void Action()
     {
-        var hit = Physics2D.Raycast(transform.position, Vector2.left, 0.6f, playerLayer);
+        var hit = Physics2D.Raycast(transform.position, Vector2.left, status.distanceAttack, playerLayer);
         if (hit.collider != null)
         {
             if (cooldownAttack <= 0)
@@ -41,7 +41,7 @@ public class Demon : Enemy
 
     public override void AttackEvent()
     {
-        var hit = Physics2D.Raycast(transform.position, Vector2.left, 0.6f, playerLayer);
+        var hit = Physics2D.Raycast(transform.position, Vector2.left, status.distanceAttack, playerLayer);
         if (hit.collider == null) return;
         PlayerHealth health = hit.transform.GetComponent<PlayerHealth>();
         health.TakeHit(status.damage, false);

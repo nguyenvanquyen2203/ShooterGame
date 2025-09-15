@@ -16,6 +16,7 @@ MonoBehaviour:
   maxHp: 5
   damage: 1
   delayAttack: 2
+  distanceAttack: 0.6
   enemyPool:
     poolName: Demon
     prefab: {fileID: 7113898304194325799, guid: f8b668acfc7fcec4da3535af0dcfda3a, type: 3}

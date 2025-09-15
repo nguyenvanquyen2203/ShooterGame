@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameGun: ShotGun
   image: {fileID: 2107595011, guid: 89bdee847c429bc46aed9f5564895ca3, type: 3}
-  headPos: {x: 3, y: 0.05, z: 0}
-  fireDelayTime: 0.5
+  headPos: {x: 1.1, y: 0, z: 0}
+  fireDelayTime: 0.3
   damage: 3
   magazineSize: 9
-  reserveAmmo: 27
+  reserveAmmo: 9
   reloadTime: 1
   recoilAround: {x: 0, y: 0}
-  gunAnimator: {fileID: 22100000, guid: 99108b487ec4a32448e354e47276e7e2, type: 2}
+  gunAnimator: {fileID: 22100000, guid: 4c1e2b8a2a489cb44b8b642d05f8393b, type: 2}
+  isRightHold: 0
+  localPosition: {x: 0.35, y: 0.2, z: 0}
+  localRotation: {x: 0, y: 0, z: 35}
   bullet:
     poolName: ShotgunBulletPool
     prefab: {fileID: 6240212385162307232, guid: 7c81c49df76f31441855f812836ca05d, type: 3}

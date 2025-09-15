@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameGun: Uzi
   image: {fileID: 754778598, guid: 89bdee847c429bc46aed9f5564895ca3, type: 3}
-  headPos: {x: 2, y: 0.1, z: 0}
+  headPos: {x: 0.75, y: 0, z: 0}
   fireDelayTime: 0.02
   damage: 1
   magazineSize: 60
   reserveAmmo: 480
   reloadTime: 1
   recoilAround: {x: 0.75, y: 1.5}
-  gunAnimator: {fileID: 22100000, guid: 5593932c7bcc91b4c8d71aa2f120ced3, type: 2}
+  gunAnimator: {fileID: 22100000, guid: 7d3f7e62bfc75d4479a2704507791894, type: 2}
+  isRightHold: 0
+  localPosition: {x: 0.24, y: 0.25, z: 0}
+  localRotation: {x: 0, y: 0, z: 35}
   bullet:
     poolName: SingleBulletPool
     prefab: {fileID: 9113644219029000464, guid: ac92728c02d4fc24686cd7d2bd0ed58c, type: 3}

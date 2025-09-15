@@ -3,10 +3,11 @@ using UnityEngine;
 public class FlyingDemon : Enemy
 {
     public NormalBullet bullet;
+    public float bulletSpeed = 20f;
     public Transform tower;
     public override void Action()
     {
-        if (transform.position.x - tower.position.x < 10f)
+        if (transform.position.x - tower.position.x < status.distanceAttack)
         {
             if (cooldownAttack <= 0)
             {
@@ -49,6 +50,6 @@ public class FlyingDemon : Enemy
     public override void OnCreate()
     {
         IntinialEnemy();
-        bullet.SetBullet(20f, status.damage, playerLayer);
+        bullet.SetBullet(bulletSpeed, status.damage, playerLayer);
     }    
 }

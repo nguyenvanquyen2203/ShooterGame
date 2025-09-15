@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WeaponManager : WeaponCollectItem
+public class WeaponManager : WeaponCollectItem, IObserver<PauseGameAction>
 {
     private static WeaponManager instance;
     public static WeaponManager Instance { get { return instance; } }
     [Header("Gun")]
-    public List<GunInformation> gunInfos;
+    private List<GunInformation> gunInfos;
     public List<GunGameIcon> listGunIcon;
     private int currentIndexGun = 0;
 
@@ -22,6 +22,7 @@ public class WeaponManager : WeaponCollectItem
     private List<(int, int)> bulletPerAmmo;
 
     private GunMachine gunCtrl;
+    private bool isPause;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class WeaponManager : WeaponCollectItem
     }
     void Start()
     {
+        PauseGameController.Instance.AddObserver(this);
         gunInfos = InGameData.Instance.gunEquips;
         //Spawn pool need for game
         foreach (var gun in gunInfos)
@@ -56,6 +58,7 @@ public class WeaponManager : WeaponCollectItem
     }
     private void Update()
     {
+        if (isPause) return;
         #region Set Gun
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -84,6 +87,7 @@ public class WeaponManager : WeaponCollectItem
     }
     private void SetCurrentGun(int newIndex)
     {
+        //Cancel Gun Icon
         if (newIndex > listGunIcon.Count - 1) return;
         if (currentIndexWeapon != 0) CancelSpecialWeapon();
         if (newIndex == currentIndexGun) return;
@@ -94,6 +98,7 @@ public class WeaponManager : WeaponCollectItem
         bulletInMagazine = numberBullet;
         bulletPerAmmo[currentIndexGun] = (bulletInMagazine, reserveAmmo);
 
+        //Set Gun UI
         gunCtrl.SetGun(gunInfos[newIndex], bulletPerAmmo[newIndex].Item1, bulletPerAmmo[newIndex].Item2);
         listGunIcon[currentIndexGun].DisactiveGun();
         listGunIcon[newIndex].ActiveGun();
@@ -181,5 +186,10 @@ public class WeaponManager : WeaponCollectItem
             (int bullet, int ammo) = bulletPerAmmo[i];
             gunInfos[i].reserveAmmo = bullet + ammo;
         }
+    }
+
+    public void OnNotify(PauseGameAction obj)
+    {
+        isPause = obj == PauseGameAction.Pause;
     }
 }

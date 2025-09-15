@@ -32,7 +32,7 @@ public class NormalBullet : MonoBehaviour
         direction = moveVector.normalized;
         // Rotate bullet by dir
         Vector3 targetEulerAngles = Vector3.zero;
-        targetEulerAngles.z = Mathf.Clamp(Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg, -90f, 90f);
+        targetEulerAngles.z = Mathf.Clamp(Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg, -360f, 360f);
         transform.eulerAngles = targetEulerAngles;
         //Intinialize bullet
         transform.position = startPos;

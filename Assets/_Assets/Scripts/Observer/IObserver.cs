@@ -1,4 +1,4 @@
-public interface IObserver
+public interface IObserver<T>
 {
-    void OnNotify();
+    void OnNotify(T obj);
 }

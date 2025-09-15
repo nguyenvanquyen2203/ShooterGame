@@ -42,6 +42,7 @@ public class WeaponBoxItem : ItemBox
     {
         transform.DOMove(targetMove, 1f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
+            Debug.Log("Collect SP Weapon");
             weaponCollect.WeaponCollect(nameWeapon);
             gameObject.SetActive(false);
         });

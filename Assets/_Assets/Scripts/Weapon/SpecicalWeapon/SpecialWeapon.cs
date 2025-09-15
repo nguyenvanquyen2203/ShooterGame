@@ -10,6 +10,6 @@ public abstract class SpecialWeapon : PoolObject
     {
         targetPos = activePos;
         this.value = value;
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
     }
 }

@@ -88,32 +88,6 @@ public class OptionWindowManager : MonoBehaviour
     {
         SetWindowData(indexPage);
     }
-    /*public void UnequipWeapon(int indexWeapon)
-    {
-        if (indexPage == 0)
-        {
-            gunDatas[indexWeapon].UnequipWeapon();
-            equipManager.ChangeWindow(listNumberEquip[indexPage], gunDatas);
-        } 
-        if (indexPage == 1)
-        {
-            itemDatas[indexWeapon].UnequipWeapon();
-            equipManager.ChangeWindow(listNumberEquip[indexPage], itemDatas);
-        }
-    }
-    public void EquipWeapon(int indexWeapon)
-    {
-        if (indexPage == 0)
-        {
-            gunDatas[indexWeapon].UnequipWeapon();
-            equipManager.ChangeWindow(listNumberEquip[indexPage], gunDatas);
-        }
-        if (indexPage == 1)
-        {
-            itemDatas[indexWeapon].UnequipWeapon();
-            equipManager.ChangeWindow(listNumberEquip[indexPage], itemDatas);
-        }
-    }*/
     public void ClearEquipBtn()
     {
         if (indexPage == 0)

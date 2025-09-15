@@ -16,6 +16,7 @@ MonoBehaviour:
   maxHp: 5
   damage: 1
   delayAttack: 2
+  distanceAttack: 10
   enemyPool:
     poolName: FlyingDemon
     prefab: {fileID: 5370002296216414961, guid: f179a8f51cd076544888ccc7ffea90d2, type: 3}
