@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour, IObserver<PauseGameAction>
     public OverPanel overPanel;
     private float cooldownPigeon;
     private bool isStart;
+    private bool isOver = false;
+    public bool IsOver { get { return isOver; } }
     // Start is called before the first frame update
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour, IObserver<PauseGameAction>
         PauseGameController.Instance.AddObserver(this);
         readyPanel.SetActive(true);
         isStart = false;
+        isOver = false;
         Time.timeScale = 1f;
     }
     public void ActiveBoxEffect(Vector3 activePos)
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour, IObserver<PauseGameAction>
     }
     public void GameOver(bool isWin)
     {
+        isOver = true;
         Time.timeScale = 0f;
         isStart = false;
         CoinManager.Instance.AddCoin(currentCoin);

@@ -16,7 +16,7 @@ MonoBehaviour:
   itemImage: {fileID: 1445121547, guid: 3aa1d08649e421b4cb2698236b831645, type: 3}
   currentLv: 0
   maxLevel: 3
-  upgradeCost: 2000
+  upgradeCost: 1000
   upgradeIncrease: 2000
   description: Attack flying monster.
   value: 2

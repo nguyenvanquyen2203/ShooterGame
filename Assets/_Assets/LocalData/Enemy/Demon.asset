@@ -20,4 +20,4 @@ MonoBehaviour:
   enemyPool:
     poolName: Demon
     prefab: {fileID: 7113898304194325799, guid: f8b668acfc7fcec4da3535af0dcfda3a, type: 3}
-    initialSize: 20
+    initialSize: 15

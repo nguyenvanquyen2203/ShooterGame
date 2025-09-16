@@ -8,17 +8,17 @@ public class LevelBtn : MonoBehaviour
 {
     public TextMeshProUGUI txt;
     private Button button;
-    private MapData data;
-    public void IntinializeButton(string content, bool isActive, MapData _data)
+    private int indexMap;
+    public void IntinializeButton(string content, bool isActive, int _indexMap)
     {
         button = GetComponent<Button>();
         button.interactable = isActive;
         txt.text = content;
-        data = _data;
+        indexMap = _indexMap;
     }
     public void SaveMapData()
     {
-        InGameData.Instance.SetMapData(data);
+        InGameData.Instance.SetMapData(indexMap);
     }
     public void LoadScene()
     {

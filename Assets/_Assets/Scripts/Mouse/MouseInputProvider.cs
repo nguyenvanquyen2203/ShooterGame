@@ -29,7 +29,7 @@ public class MouseInputProvider : MonoBehaviour, IObserver<PauseGameAction>
     }
     private void ClickAction()
     {
-        if (isPause) return;
+        if (isPause || GameManager.Instance.IsOver) return;
         // Create a ray from the camera through the mouse position
         Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 

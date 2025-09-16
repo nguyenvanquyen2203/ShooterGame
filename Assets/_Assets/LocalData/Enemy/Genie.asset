@@ -20,4 +20,4 @@ MonoBehaviour:
   enemyPool:
     poolName: Genie
     prefab: {fileID: 1513101150700634340, guid: 1a74f3cd2ae3a6a4f9c63f51555d197c, type: 3}
-    initialSize: 20
+    initialSize: 10

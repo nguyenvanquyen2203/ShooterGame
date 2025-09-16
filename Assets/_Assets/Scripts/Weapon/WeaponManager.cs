@@ -58,7 +58,7 @@ public class WeaponManager : WeaponCollectItem, IObserver<PauseGameAction>
     }
     private void Update()
     {
-        if (isPause) return;
+        if (isPause || GameManager.Instance.IsOver) return;
         #region Set Gun
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

@@ -17,5 +17,7 @@ public class OverPanel : MonoBehaviour
         coinTxt.text = coin;
         completeGO.SetActive(isWin);
         failGO.SetActive(!isWin);
+        if (InGameData.Instance.selectedMap + 1 >= InGameData.Instance.mapDatas.Count)
+            nextLvBtn.interactable = false;
     }
 }

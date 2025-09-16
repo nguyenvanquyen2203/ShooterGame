@@ -15,6 +15,7 @@ public class GameMenu : MonoBehaviour
     private void Start()
     {
         AudioManager.Instance.PlayMusic("MenuMusic");
+        Time.timeScale = 1f;
     }
     public GameObject fontPanel;
     public void OpenWindow(GameObject window)

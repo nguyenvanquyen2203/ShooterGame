@@ -2154,7 +2154,12 @@ MonoBehaviour:
   gunEquips: []
   specialItemEquips: []
   towers: []
-  mapData: {fileID: 11400000, guid: 41e68e9290f16d545a9974c7ce839ae3, type: 2}
+  mapDatas:
+  - {fileID: 11400000, guid: 41e68e9290f16d545a9974c7ce839ae3, type: 2}
+  - {fileID: 11400000, guid: 72c4e190e9b6aba4493995d17246a9b0, type: 2}
+  - {fileID: 11400000, guid: ab2472b01fcd0f7429711b5f120ad9b6, type: 2}
+  - {fileID: 11400000, guid: 7fd66f713ba9efc469ac2635a9d63d71, type: 2}
+  selectedMap: 0
 --- !u!1 &661584798
 GameObject:
   m_ObjectHideFlags: 0
@@ -4974,11 +4979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14db1099a4c16ca44af98b337dee3fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapDatas:
-  - {fileID: 11400000, guid: 41e68e9290f16d545a9974c7ce839ae3, type: 2}
-  - {fileID: 11400000, guid: 72c4e190e9b6aba4493995d17246a9b0, type: 2}
-  - {fileID: 11400000, guid: ab2472b01fcd0f7429711b5f120ad9b6, type: 2}
-  - {fileID: 11400000, guid: 7fd66f713ba9efc469ac2635a9d63d71, type: 2}
   levelPanel: {fileID: 1486110072}
   lvBtnPrefab: {fileID: 5002692586868520686, guid: 946ad58bbd9d52040a14c04d3c39b425, type: 3}
   levelUnlock: 4
@@ -5674,7 +5674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486510115

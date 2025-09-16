@@ -19,6 +19,6 @@ MonoBehaviour:
   upgradeCost: 1200
   upgradeIncrease: 1200
   description: Very fast. More effective at close range
-  maxAmmo: 240
+  maxAmmo: 480
   buyAmmoCost: 200
   gunInformation: {fileID: 11400000, guid: ef996780d4927b34b8de21e3ea70e37d, type: 2}

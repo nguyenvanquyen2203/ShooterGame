@@ -8,4 +8,9 @@ public class SceneInteract : MonoBehaviour
     {
         SceneManager.LoadScene(indexScene);
     } 
+    public void LoadNextLevel()
+    {
+        InGameData.Instance.selectedMap++;
+        SceneManager.LoadScene(1);
+    }
 }
