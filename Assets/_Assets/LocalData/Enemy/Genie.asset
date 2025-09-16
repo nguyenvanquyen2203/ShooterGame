@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ced4dab8be5a5419ede5c4aeb8587f, type: 3}
+  m_Name: Genie
+  m_EditorClassIdentifier: 
+  moveSpeed: 1.5
+  maxHp: 5
+  damage: 2
+  delayAttack: 5
+  distanceAttack: 10
+  enemyPool:
+    poolName: Genie
+    prefab: {fileID: 1513101150700634340, guid: 1a74f3cd2ae3a6a4f9c63f51555d197c, type: 3}
+    initialSize: 10

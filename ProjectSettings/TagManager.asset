@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Monster
+  - FlyingEnemy
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - BoxGround/3
   - BoxGround/4
   - Player
-  - 
-  - 
+  - Drone
+  - FlyingMonster
   - 
   - 
   - 
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3983591483
+    locked: 0
+  - name: FontBG
+    uniqueID: 290157193
     locked: 0

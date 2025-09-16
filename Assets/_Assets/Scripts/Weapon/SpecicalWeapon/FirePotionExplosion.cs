@@ -12,6 +12,7 @@ public class FirePotionExplosion : SpExplosion
         var hits = Physics2D.BoxCastAll(transform.position, boxSize, 0f, Vector2.zero, 0f, GunMachine.Instance.enemyLayer);
         foreach (var hit in hits)
         {
+            hit.collider.gameObject.GetComponent<Enemy>().TakeHit(damage, false);
             hit.collider.gameObject.GetComponent<Enemy>().ActiveEffect(Enemy.SpEffect.Burn);
         }
     }

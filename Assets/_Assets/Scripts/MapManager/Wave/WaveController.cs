@@ -2,44 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class WaveController : MonoBehaviour
 {
     private static WaveController instance;
     public static WaveController Instance { get { return instance; } }
-    public WaveData data;
+    public List<WaveData> waveDatas;
     public Slider waveProcess;
     public ParticleSystem snowEffect;
-    private EnemySpawner enemySpawn;
     private List<Enemy> enemies = new();
     private List<Enemy> enemiesBurn = new();
     private List<SingleEffect> burnEffects = new();
     private bool isSnow;
     private float snowTime;
+    private int currentWave = 0;
     // Start is called before the first frame update
     private void Awake()
     {
         instance = this;
-        enemySpawn = GetComponent<EnemySpawner>();
     }
     private void Start()
     {
-        Invoke(nameof(SpawnWave), 2f);
+        waveProcess.value = 0f;
     }
-    void SpawnWave()
+    public void SpawnWave(int index)
     {
-        foreach (var enemy in data.listEnemyPos)
+        if (currentWave >= waveDatas.Count)
+        {
+            Invoke(nameof(OverSpawn), 2f);
+            return;
+        }
+        foreach (var enemy in waveDatas[currentWave].listEnemyPos)
         {
             Enemy tempEnemy = PoolManager.Instance.Get<Enemy>(enemy.nameEnemy);
             tempEnemy.ActiveEnemy(enemy.position, this);
             if (isSnow) tempEnemy.Freeze();
             enemies.Add(tempEnemy);
         }
+        currentWave++;
+        waveProcess.DOValue((float)currentWave / (float)waveDatas.Count, 1.5f);
     }
     public void RemoveEnemy(Enemy enemy)
     {
         enemies.Remove(enemy);
-        if (enemies.Count <= 0) SpawnWave();
+        if (enemies.Count <= 0) SpawnWave(currentWave);
     }
     public void RemoveBurnEnemy(Enemy enemy)
     {
@@ -67,6 +74,7 @@ public class WaveController : MonoBehaviour
             }
         } 
     }
+
     public void BurnEnemy(Enemy enemy)
     {
         enemiesBurn.Add(enemy);
@@ -84,4 +92,9 @@ public class WaveController : MonoBehaviour
         isSnow = true;
         this.snowTime = snowTime;
     }
+    private void OverSpawn()
+    {
+        GameManager.Instance.GameOver(true);
+    }
+    public void SetWaveData(List<WaveData> data) => waveDatas = data;
 }

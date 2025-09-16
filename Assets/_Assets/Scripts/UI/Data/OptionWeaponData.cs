@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OptionWeaponData : OptionItemData
+public abstract class OptionWeaponData : OptionItemData
 {
-    public override void BuyAmmo()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    
+    protected bool isEquip;
+    //public int reserveAmmo;
+    public int maxAmmo;
+    public int buyAmmoCost;
+    public bool IsEquip() => isEquip;
+    public virtual void EquipWeapon() => isEquip = true;
+    public virtual void UnequipWeapon() => isEquip = false;
+    public abstract bool IsFullAmmo();
+    public abstract int GetReserve();
 }

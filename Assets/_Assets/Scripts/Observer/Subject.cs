@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Subject : MonoBehaviour
+public abstract class Subject<T> : MonoBehaviour
 {
-    protected List<IObserver> _observers = new();
-    public void AddObserver(IObserver observer)
+    //protected Dictionary<T, List<IObserver<T>>> _observers = new();
+    protected List<IObserver<T>> _observers = new();
+    public void AddObserver(IObserver<T> observer)
     {
         _observers.Add(observer);
     } 
-    public void RemoveObserver(IObserver observer)
+    public void RemoveObserver(IObserver<T> observer)
     {
         _observers.Remove(observer);
     }
-    public void NotifyObserver()
+    public void NotifyObserver(T key)
     {
         foreach (var observer in _observers)
         {
-            observer.OnNotify();
+            observer.OnNotify(key);
         }
     }
 }

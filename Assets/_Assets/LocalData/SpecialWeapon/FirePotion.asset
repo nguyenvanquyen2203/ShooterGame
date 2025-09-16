@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FirePotion
   m_EditorClassIdentifier: 
   nameWeapon: FirePotion
-  currentOwner: 2
-  maxOwner: 10
+  currentOwner: 10
+  value: 2
   icon: {fileID: 21300000, guid: d81d4456d7fd1524aa42e97179f4fba2, type: 3}

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Ice Potion
   itemImage: {fileID: 21300000, guid: b283ec78b9fae73499532e228325274a, type: 3}
-  reserveAmmo: 10
-  maxAmmo: 10
   currentLv: 1
   maxLevel: 7
-  buyAmmoCost: 600
-  magazineSize: 1
   upgradeCost: 1000
   upgradeIncrease: 1000
+  description: Create blizzard and slow down monsters.
+  maxAmmo: 10
+  buyAmmoCost: 600
+  data: {fileID: 11400000, guid: feefaea3d976e9744af6fde978fc846a, type: 2}

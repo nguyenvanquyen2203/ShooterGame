@@ -6,15 +6,12 @@ public abstract class OptionItemData : ScriptableObject
 {
     public string itemName;
     public Sprite itemImage;
-    public int reserveAmmo; // Weapon
-    public int maxAmmo; //Weapon
     public int currentLv;
     public int maxLevel;
-    public int buyAmmoCost; //Weapon
-    public int magazineSize; // Gun
     public int upgradeCost;
     public int upgradeIncrease;
-    public int UpgradeItem(int currentCoin)
+    public string description;
+    /*public int UpgradeItem(int currentCoin)
     {
         int tempCoin = currentCoin - upgradeCost;
         if (tempCoin >= 0)
@@ -23,18 +20,23 @@ public abstract class OptionItemData : ScriptableObject
             upgradeCost += upgradeIncrease;
         }
         return tempCoin;
-    }
-    public bool CheckBuyAmmo(int currentCoin)
+    }*/
+    public virtual void UpgradeItem()
     {
-        if (currentCoin < buyAmmoCost) return false;
-        if (reserveAmmo >= maxAmmo) return false;
-        return true;
+        currentLv++;
+        upgradeCost += upgradeIncrease;
     }
+    public abstract bool CheckBuyItem(int currentCoin);
     public bool CheckUpgrade(int currentCoin)
     {
         if (currentCoin < upgradeCost) return false;
         if (currentLv >= maxLevel) return false;
         return true;
     }
-    public abstract void BuyAmmo();
+    public abstract void BuyItem();
+    public bool IsMaxLevel() => currentLv >= maxLevel;
+    public bool IsOwner()
+    {
+        return currentLv != 0;
+    }
 }

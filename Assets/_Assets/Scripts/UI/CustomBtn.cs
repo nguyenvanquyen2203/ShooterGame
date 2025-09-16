@@ -8,25 +8,31 @@ public class CustomBtn : MonoBehaviour
 {
     public Button button;
     public TextMeshProUGUI buttonText;
+    public TextMeshProUGUI buttonContentText;
     private Image img;
     private void Awake()
     {
         img = GetComponent<Image>();
     }
-    public void SetButton(string content, bool isActive)
+    public void SetButton(string content, string price, bool isActive)
     {
-        buttonText.text = content;
+        buttonContentText.text = content;
+        buttonText.text = price;
         if (isActive) ActiveButton();
         else DisactiveButton();
     }
+    /*public void SetMaxButton(string content)
+    {
+        buttonContentText.text = content;
+        buttonText.text = "";
+        DisactiveButton();
+    }*/
     private void ActiveButton()
     {
         button.interactable = true;
-        img.color = new Color(1f, 1f, 1f);
     }
     private void DisactiveButton()
     {
         button.interactable = false;
-        img.color = new Color(.5f, .5f, .5f);
     }
 }

@@ -1,21 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ThrowSpWeapon : SpecialWeapon
 {
     public string nameExplosion;
     public float xVelocity = 20f;
-    public float damage;
     private float yVelocity;
     private Vector3 moveVector;
     private float gravity = -9.81f * 3;
     private float timeMove;
     private void OnEnable()
     {
-        timeMove = (targetPos.x + 11f) / xVelocity;
-        yVelocity = (targetPos.y - gravity * timeMove * timeMove / 2) / timeMove;
-        transform.position = Vector3.right * -11f;
+        timeMove = (targetPos.x - transform.position.x) / xVelocity;
+        yVelocity = ((targetPos.y - transform.position.y) - gravity * timeMove * timeMove / 2) / timeMove;
+        //transform.position = Vector3.right * -11f;
         moveVector = Vector3.up * yVelocity;
     }
 
@@ -31,7 +28,8 @@ public class ThrowSpWeapon : SpecialWeapon
     public void ActiveEffect()
     {
         SpExplosion effect = PoolManager.Instance.Get<SpExplosion>(nameExplosion);
-        effect.ActiveExplosion(transform.position, damage);
+        AudioManager.Instance.PlaySFX(nameExplosion);
+        effect.ActiveExplosion(transform.position, value);
         OwnerPool.ReturnToPool(this);
     }
 

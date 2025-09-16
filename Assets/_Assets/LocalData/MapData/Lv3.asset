@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13becb46a70e8dc4bb6d27454be7be14, type: 3}
+  m_Name: Lv3
+  m_EditorClassIdentifier: 
+  waveDatas:
+  - {fileID: 11400000, guid: 5a64899fcc7a50648b6c7e07c7373f02, type: 2}
+  - {fileID: 11400000, guid: a3e0f5fbfdc1f3348a262841e3de9479, type: 2}
+  - {fileID: 11400000, guid: fd50396194b56954981c39f165d7fabb, type: 2}
+  - {fileID: 11400000, guid: 4aca65d244efec34499542492c29258e, type: 2}
+  backGround1: {fileID: 21300000, guid: 0a0ee7c21ba615942bb7b8af8b654e28, type: 3}
+  backGround2: {fileID: 21300000, guid: 7d64ba5cf497db741aa33a7525395ca2, type: 3}
+  foreground:
+  - sprite: {fileID: 21300000, guid: 5cfe60b0b15140b4c9c8d6704c4223c0, type: 3}
+    position: {x: 5.3, y: -8.5, z: 0}
+  - sprite: {fileID: 21300000, guid: 11bc8f496d796694eb78bf0bccefb0f7, type: 3}
+    position: {x: -3, y: -8.5, z: 0}
+  warnings: []

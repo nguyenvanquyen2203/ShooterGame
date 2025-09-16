@@ -15,7 +15,7 @@ public class GunAttack : BaseState<GunMachine>
 
     public override void OnEnter()
     {
-        machine.ChangeAnim("GunAttack");
+        
     }
 
     public override void OnExit()
@@ -34,7 +34,7 @@ public class GunAttack : BaseState<GunMachine>
         {
             machine.Shoot();
             machine.ResetFireCooldown();
-        } 
+        }
         if (Input.GetMouseButtonUp(0) || machine.GetBullet() <= 0)
         {
             machine.ChangeState(machine.IdleState);

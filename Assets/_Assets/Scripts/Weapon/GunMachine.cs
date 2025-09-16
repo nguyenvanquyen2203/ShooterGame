@@ -11,6 +11,7 @@ public class GunMachine : StateMachine
     public static GunMachine Instance { get { return instance; } }
 
     public Transform headGun;
+    private Vector3 headGunPos;
     public SpriteRenderer gunSprite;
     public LayerMask enemyLayer;
 
@@ -29,9 +30,17 @@ public class GunMachine : StateMachine
     private GunIdle idleState;
     private GunAttack attackState;
     private GunReload reloadState;
+    private GunPutAway putAwayState;
+    private GunTakeOut takeOutState;
+    private GunThrowWeapon throwState;
+    private bool isLockState;
+
     public GunIdle IdleState { get { return idleState; } }
     public GunAttack GunAttack { get { return attackState; } }
     public GunReload GunReload { get { return reloadState; } }
+    public GunTakeOut TakeOutState { get { return takeOutState; } }
+    public GunPutAway PutAwayState { get { return putAwayState; } }
+    public GunThrowWeapon ThrowState { get { return throwState; } }
     // Start is called before the first frame update
     private void Awake()
     {
@@ -40,9 +49,13 @@ public class GunMachine : StateMachine
         idleState = new GunIdle(this);
         attackState = new GunAttack(this);
         reloadState = new GunReload(this);
+        putAwayState = new GunPutAway(this);
+        takeOutState = new GunTakeOut(this);
+        throwState = new GunThrowWeapon(this);
     }
     void Start()
     {
+        isLockState = false;
         ChangeState(idleState);
     }
 
@@ -56,16 +69,14 @@ public class GunMachine : StateMachine
         }
         currenState.Update();
     }
-    public void ResetIdleTime()
-    {
-
-    }
     public void ClickAction()
     {
         if (!canAttack || numberBullet <= 0) return;
         ChangeState(attackState);
     }
     public bool CanAttack() => canAttack;
+    public void LockState() => isLockState = true;
+    public void UnlockState() => isLockState = false;
     public void StopClickAction()
     {
         
@@ -73,6 +84,7 @@ public class GunMachine : StateMachine
     public void ResetFireCooldown() => fireDelayCooldown = currentGun.fireDelayTime;
     public void ChangeState(BaseState<GunMachine> newState)
     {
+        if (isLockState) return;
         if (currenState == newState) return;
         if (currenState != null) currenState.OnExit();
         currenState = newState;
@@ -85,20 +97,21 @@ public class GunMachine : StateMachine
     public void Shoot()
     {
         if (numberBullet <= 0) return;
+        AudioManager.Instance.PlaySFX($"{currentGun.nameGun + "Shoot"}");
         numberBullet--;
         ShowBullet();
         canAttack = false;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mousePos.z = 0f;
-        anim.Play("GunAttack");
+        anim.Play(PlayerAnimationState.PlayerAttackAnim);
         BulletController pool = PoolManager.Instance.Get<BulletController>(currentGun.GetNameBullet());
 
         // Apply accuracy of gun to calculator target position
         Vector2 recoilSquare = currentGun.recoilAround;
         float randomX = Random.Range(-recoilSquare.x, recoilSquare.x);
         float randomY = Random.Range(-recoilSquare.y, recoilSquare.y);
-        Vector3 targetPos = mousePos + (new Vector3(randomX, randomY, 0f)) * (headGun.position - mousePos).sqrMagnitude / 100f;
-        pool.ActiveBullet(headGun.position, targetPos, currentGun.damage);
+        Vector3 targetPos = mousePos + (new Vector3(randomX, randomY, 0f)) * (headGunPos - mousePos).sqrMagnitude / 100f;
+        pool.ActiveBullet(headGunPos, targetPos, currentGun.damage);
     }
     public void SetGun(GunInformation newGun, int bullet, int _reverseAmmo)
     {
@@ -106,15 +119,21 @@ public class GunMachine : StateMachine
         SetGun(bullet, _reverseAmmo);
         magazineSize = currentGun.magazineSize;
         anim.runtimeAnimatorController = currentGun.gunAnimator;
-        gunSprite.sprite = currentGun.image;
-        headGun.localPosition = currentGun.headPos;
-        muzzleFlash.localPosition = currentGun.headPos + new Vector3(-.1f, -.075f, 0f);
+        if (headGunPos != Vector3.zero) ChangeState(putAwayState);
+        //gunSprite.sprite = currentGun.image;
+        headGunPos = gunSprite.transform.position + gunSprite.transform.right * currentGun.headPos.x + gunSprite.transform.up * currentGun.headPos.y;
+        muzzleFlash.localPosition = currentGun.headPos;
     }
     public void SetGun(int bullet, int _reverseAmmo)
     {
         numberBullet = bullet;
         reverseAmmo = _reverseAmmo;
         ShowBullet();
+    }
+    public void SetUIGun()
+    {
+        gunSprite.sprite = currentGun.image;
+        gunSprite.transform.localPosition = currentGun.localPosition;
     }
     private void ShowBullet()
     {

@@ -16,6 +16,10 @@ public class SpecialWeaponIcon : MonoBehaviour
         icon.sprite = sprite;
         txt.text = number.ToString();
     }
+    public void ReloadSpWeaponIcon(int newNumber)
+    {
+        txt.text = newNumber.ToString();
+    }
     public void Active()
     {
         bg.color = Color.red;

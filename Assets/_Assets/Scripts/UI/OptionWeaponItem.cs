@@ -2,8 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class OptionWeaponItem : OptionItem
+public class OptionWeaponItem : OptionItem<OptionWeaponData>
 {
-    //public Button equipBtn;
+    public TextMeshProUGUI ammoText;
+    public Button equipBtn;
+    public override void ReloadOptionItem(int currentCoin)
+    {
+        if (data.currentLv == 0)
+        {
+            ammoText.text = string.Empty;
+            upgradeBtn.SetButton("Unlock", data.buyAmmoCost.ToString(), data.CheckBuyItem(currentCoin));
+            buyItemBtn.SetButton(string.Empty, string.Empty, false);
+            equipBtn.gameObject.SetActive(false);
+            return;
+        }
+        if (data.IsEquip()) equipBtn.gameObject.SetActive(false);
+        else equipBtn.gameObject.SetActive(true);
+        ammoText.text = data.GetReserve().ToString();
+        string buyContent = data.buyAmmoCost.ToString();
+        
+        if (data.IsFullAmmo()) buyContent = "MAX";
+        buyItemBtn.SetButton("Buy Ammo" , buyContent, data.CheckBuyItem(currentCoin));
+
+        string upgradeContent = data.upgradeCost.ToString();
+        if (data.IsMaxLevel()) upgradeContent = "MAX";
+        upgradeBtn.SetButton("Upgrade", upgradeContent, data.CheckUpgrade(currentCoin));
+    }
+    public void EquipWeapon()
+    {
+        data.EquipWeapon();
+        OptionWindowManager.Instance.ReloadWindow();
+    }
+
+    public override void BuyItem()
+    {
+        CoinManager.Instance.SpendCoin(data.buyAmmoCost);
+        data.BuyItem();
+        OptionWindowManager.Instance.ReloadWindow();
+    }
+    public void RemoveEquipBtn()
+    {
+        equipBtn.gameObject.SetActive(false);
+    }
 }

@@ -5,9 +5,11 @@ using UnityEngine;
 public abstract class SpecialWeapon : PoolObject
 {
     protected Vector3 targetPos;
-    public virtual void ActiveSpWeapon(Vector3 activePos)
+    protected float value;
+    public virtual void ActiveSpWeapon(Vector3 activePos, float value)
     {
         targetPos = activePos;
-        gameObject.SetActive(true);
+        this.value = value;
+        //gameObject.SetActive(true);
     }
 }

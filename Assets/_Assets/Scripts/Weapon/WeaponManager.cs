@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : WeaponCollectItem, IObserver<PauseGameAction>
 {
     private static WeaponManager instance;
     public static WeaponManager Instance { get { return instance; } }
     [Header("Gun")]
-    public List<GunInformation> gunInfos;
+    private List<GunInformation> gunInfos;
     public List<GunGameIcon> listGunIcon;
     private int currentIndexGun = 0;
 
@@ -22,6 +22,7 @@ public class WeaponManager : MonoBehaviour
     private List<(int, int)> bulletPerAmmo;
 
     private GunMachine gunCtrl;
+    private bool isPause;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -30,6 +31,8 @@ public class WeaponManager : MonoBehaviour
     }
     void Start()
     {
+        PauseGameController.Instance.AddObserver(this);
+        gunInfos = InGameData.Instance.gunEquips;
         //Spawn pool need for game
         foreach (var gun in gunInfos)
         {
@@ -47,10 +50,15 @@ public class WeaponManager : MonoBehaviour
             bulletPerAmmo.Add((bulletInMagazine, reserveAmmo));
             listGunIcon[i].SetIcon(gunInfos[i].image, reserveAmmo);
         }
+        for (int i = gunInfos.Count; i < listGunIcon.Count; i++)
+        {
+            listGunIcon[i].gameObject.SetActive(false);
+        }
         gunCtrl.SetGun(gunInfos[0], bulletPerAmmo[0].Item1, bulletPerAmmo[0].Item2);
     }
     private void Update()
     {
+        if (isPause || GameManager.Instance.IsOver) return;
         #region Set Gun
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -79,6 +87,8 @@ public class WeaponManager : MonoBehaviour
     }
     private void SetCurrentGun(int newIndex)
     {
+        //Cancel Gun Icon
+        if (newIndex > listGunIcon.Count - 1) return;
         if (currentIndexWeapon != 0) CancelSpecialWeapon();
         if (newIndex == currentIndexGun) return;
 
@@ -88,6 +98,7 @@ public class WeaponManager : MonoBehaviour
         bulletInMagazine = numberBullet;
         bulletPerAmmo[currentIndexGun] = (bulletInMagazine, reserveAmmo);
 
+        //Set Gun UI
         gunCtrl.SetGun(gunInfos[newIndex], bulletPerAmmo[newIndex].Item1, bulletPerAmmo[newIndex].Item2);
         listGunIcon[currentIndexGun].DisactiveGun();
         listGunIcon[newIndex].ActiveGun();
@@ -95,18 +106,22 @@ public class WeaponManager : MonoBehaviour
     }
     private void SetSpecialWeapon(int index)
     {
-        if (specialWeaponCooldown > 0) return; 
+        if (index > InGameData.Instance.specialItemEquips.Count) return;
+        if (specialWeaponCooldown > 0) return;
+        SpecialWeaponData spWeapon = InGameData.Instance.GetSpWeapon(index - 1);
+        if (spWeapon.currentOwner <= 0) return;
         if (index == currentIndexWeapon)
         {
             CancelSpecialWeapon();
             return;
         }
         currentIndexWeapon = index;
-        specialWeapon.ActiveSpecialWeapon(InGameData.Instance.GetSpWeapon(currentIndexWeapon - 1).icon);
+        specialWeapon.ActiveSpecialWeapon(spWeapon.icon);
         specialManager.ActiveSpWeapon(currentIndexWeapon);
     }
     public void Reload()
     {
+        AudioManager.Instance.PlaySFX($"{gunInfos[currentIndexGun].nameGun + "Reload"}");
         int numberBullet = gunCtrl.GetBullet();
         (int bulletInMagazine, int reserveAmmo) = bulletPerAmmo[currentIndexGun];
         int numberBulletReload = Mathf.Min(gunInfos[currentIndexGun].magazineSize - numberBullet, reserveAmmo);
@@ -142,5 +157,40 @@ public class WeaponManager : MonoBehaviour
             CancelSpecialWeapon();
         } 
         else gunCtrl.StopClickAction();
+    }
+    public (GunInformation, Vector3) GetGunRandom()
+    {
+        int randomIndex = Random.Range(0, gunInfos.Count);
+        return (gunInfos[randomIndex], Camera.main.ScreenToWorldPoint(listGunIcon[randomIndex].transform.position));
+    }
+    public override void WeaponCollect(string nameWeapon)
+    {
+        Debug.Log("Collect special weapon with name " + nameWeapon);
+        for (int i = 0; i < gunInfos.Count; i++)
+        {
+            var gun = gunInfos[i];
+            if (gun.nameGun == nameWeapon)
+            {
+                (int a, int b) = bulletPerAmmo[i];
+                b += gun.magazineSize;
+                bulletPerAmmo[i] = (a, b);
+                //listGunIcon[i].ReloadSpWeaponIcon(listSpecicalWeaponData[i].currentOwner);
+                listGunIcon[i].SetIcon(gunInfos[i].image, b);
+                return;
+            }
+        }
+    }
+    public void SaveGunBullet()
+    {
+        for (int i = 0; i < gunInfos.Count; i++)
+        {
+            (int bullet, int ammo) = bulletPerAmmo[i];
+            gunInfos[i].reserveAmmo = bullet + ammo;
+        }
+    }
+
+    public void OnNotify(PauseGameAction obj)
+    {
+        isPause = obj == PauseGameAction.Pause;
     }
 }

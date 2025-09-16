@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Drone
   m_EditorClassIdentifier: 
   itemName: Drone
-  itemImage: {fileID: -863914892, guid: 815bc30175201c345b2106338de28ad4, type: 3}
-  reserveAmmo: 0
-  maxAmmo: 1
+  itemImage: {fileID: 1445121547, guid: 3aa1d08649e421b4cb2698236b831645, type: 3}
   currentLv: 0
   maxLevel: 3
-  buyAmmoCost: 600
-  magazineSize: 1
-  upgradeCost: 2000
+  upgradeCost: 1000
   upgradeIncrease: 2000
+  description: Attack flying monster.
+  value: 2
+  buyCost: 600
+  bonusValue: 1

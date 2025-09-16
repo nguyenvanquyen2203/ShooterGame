@@ -8,6 +8,7 @@ public class EnemyStatus : ScriptableObject
     public int maxHp;
     public int damage;
     public int delayAttack;
+    public float distanceAttack;
     [Header("Enemy prefabs")]
     public PoolObj<Enemy> enemyPool;
     public string GetNameEnemy() => enemyPool.poolName;

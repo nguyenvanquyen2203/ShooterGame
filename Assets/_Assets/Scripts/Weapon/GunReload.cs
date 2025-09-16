@@ -15,7 +15,7 @@ public class GunReload : BaseState<GunMachine>
 
     public override void OnEnter()
     {
-        machine.ChangeAnim("GunReload");
+        machine.ChangeAnim(PlayerAnimationState.PlayerReloadAnim);
     }
 
     public override void OnExit()
@@ -25,7 +25,6 @@ public class GunReload : BaseState<GunMachine>
 
     public override void OnTriggerEvent(StateMachine.TriggerEventType type)
     {
-        //GunManager.Instance.Reload();
         WeaponManager.Instance.Reload();
     }
 

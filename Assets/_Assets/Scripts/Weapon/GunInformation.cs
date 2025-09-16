@@ -15,6 +15,9 @@ public class GunInformation : ScriptableObject
     public float reloadTime;
     public Vector2 recoilAround;
     public AnimatorOverrideController gunAnimator;
+    public bool isRightHold;
+    public Vector3 localPosition;
+    public Vector3 localRotation;
 
     [Header("Bullet prefabs")]
     public PoolObj<BulletController> bullet;
